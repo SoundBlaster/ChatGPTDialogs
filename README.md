@@ -2,6 +2,14 @@
 
 ChatGPTDialogs is a small macOS-first toolkit for capturing an open ChatGPT conversation from the browser, converting the saved HTML into JSON, and reviewing the result in a local viewer.
 
+Quick start:
+
+```bash
+make capture-browser-extract
+```
+
+This captures the active ChatGPT browser tab into `import/` and writes extracted JSON into `import_json/`.
+
 ## Repository Layout
 
 - `extract_chatgpt_html.py`: Converts saved ChatGPT web HTML pages into normalized JSON dialog files.
