@@ -63,8 +63,6 @@ required_files=(
   "CAPTURE_README.md"
   "scripts/capture_chatgpt_tab.sh"
   "scripts/browser_eval.js"
-  "viewer/index.html"
-  "viewer/server.py"
 )
 
 for relative_path in "${required_files[@]}"; do
@@ -77,7 +75,7 @@ done
 while IFS= read -r -d '' path; do
   relative_path="${path#${bundle_root}/}"
   case "${relative_path}" in
-    README.md|LICENSE|Makefile|extract_chatgpt_html.py|EXTRACTOR_README.md|CAPTURE_README.md|scripts/capture_chatgpt_tab.sh|scripts/browser_eval.js|viewer/index.html|viewer/server.py)
+    README.md|LICENSE|Makefile|extract_chatgpt_html.py|EXTRACTOR_README.md|CAPTURE_README.md|scripts/capture_chatgpt_tab.sh|scripts/browser_eval.js)
       ;;
     *)
       echo "Unexpected file in bundle: ${relative_path}" >&2

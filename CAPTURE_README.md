@@ -2,6 +2,8 @@
 
 This document describes the Mac-side capture workflow for saving the current ChatGPT browser tab into `import/` and optionally converting it into JSON in `import_json/`.
 
+The extracted JSON is intended to be consumed by the separate `ContextBuilder` viewer repository or by any other tool that follows the same dialog JSON contract.
+
 ## What These Scripts Do
 
 - `scripts/capture_chatgpt_tab.sh`
@@ -22,7 +24,6 @@ This document describes the Mac-side capture workflow for saving the current Cha
   - provides the entry points:
     - `make capture-browser`
     - `make capture-browser-extract`
-    - `make serve-viewer`
     - `make test`
 
 ## Supported Browsers
@@ -317,7 +318,8 @@ Then assign a keyboard shortcut in:
 After capture and extraction:
 
 ```bash
-make serve-viewer PORT=9000
+cd /path/to/ContextBuilder
+make serve DIALOG_DIR=/Users/username/Development/GitHub/ChatGPTDialogs/import_json PORT=9000
 ```
 
 Then open:
@@ -326,7 +328,7 @@ Then open:
 http://localhost:9000/viewer/index.html
 ```
 
-This lets you browse the JSON files in `import_json/`, branch dialogs, edit them, and save new files.
+This lets you browse the JSON files in `import_json/`, branch dialogs, edit them, and save new files through the separate viewer repository.
 
 To verify extractor behavior against the checked-in public corpus:
 

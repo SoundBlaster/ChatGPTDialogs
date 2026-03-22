@@ -1,50 +1,32 @@
 # ChatGPTDialogs
 
-ChatGPTDialogs is a small macOS-first toolkit for capturing an open ChatGPT conversation from the browser, converting the saved HTML into JSON, and reviewing the result in a local viewer.
+ChatGPTDialogs is an extractor-first repository for converting saved ChatGPT HTML pages into normalized JSON dialogs and validating the parser against a checked-in regression corpus.
+
+The viewer/editor now lives in the separate `ContextBuilder` repository. This repository keeps the extractor, its fixtures, and the HTML/JSON contract. The browser-capture scripts remain here for now as local workflow helpers, but they are not part of the `ContextBuilder` boundary.
 
 Quick start:
 
 ```bash
-make capture-browser-extract
+python3 extract_chatgpt_html.py path/to/dialog.html -o path/to/dialog.json
 ```
-
-This captures the active ChatGPT browser tab into `import/` and writes extracted JSON into `import_json/`.
 
 ## Main Workflows
 
-### 1. Capture the current browser tab into `import/`
+### 1. Extract saved HTML into JSON
 
-Use this when you want to save the current ChatGPT web page as raw HTML and then turn it into JSON locally.
-
-Capture only:
+Convert a single saved ChatGPT page:
 
 ```bash
-make capture-browser
+python3 extract_chatgpt_html.py import/example.html -o import_json/example.json
 ```
 
-Capture and extract immediately:
+Batch-extract all local HTML files from `import/` into `import_json/`:
 
 ```bash
-make capture-browser-extract
+make extract-all
 ```
 
-This workflow:
-
-1. Chooses the frontmost supported browser, or another running supported browser if Terminal is frontmost.
-2. Activates that browser and waits briefly for focus to settle.
-3. Auto-scrolls the page to load more content.
-4. Saves the page HTML into `import/`.
-5. Optionally extracts JSON into `import_json/`.
-
-### 2. Open the local viewer
-
-```bash
-make serve-viewer
-```
-
-The viewer reads dialogs from `import_json/`.
-
-### 3. Run extractor regression tests
+### 2. Run extractor regression tests
 
 ```bash
 make test
@@ -52,15 +34,13 @@ make test
 
 Tests use the checked-in public corpus under `tests/fixtures/`.
 
-### 4. Publish a release bundle
+### 3. Optional local browser capture
 
-Push a tag like `v0.0.1` and GitHub Actions will build a minimal `ChatGPTDialogs-0.0.1.zip` release asset plus checksums.
-
-For local packaging:
+If you still use the legacy local capture flow, you can save the active ChatGPT tab into `import/` and optionally extract it into `import_json/`:
 
 ```bash
-make release-bundle VERSION=v0.0.1
-make verify-release-bundle VERSION=v0.0.1
+make capture-browser
+make capture-browser-extract
 ```
 
 Supported browsers:
@@ -80,7 +60,11 @@ You can tune timing with variables such as:
 ACTIVATION_DELAY=2 SCROLL_PAUSE=2 MAX_SCROLLS=30 make capture-browser
 ```
 
-## Expected Data Shape
+### 4. Open extracted JSON in ContextBuilder
+
+`ContextBuilder` is the local viewer/editor for extracted dialogs. Point it at `import_json/` or at another directory containing compatible dialog JSON files.
+
+## JSON Contract
 
 Extracted JSON files are expected to contain:
 
@@ -104,6 +88,8 @@ Extracted JSON files are expected to contain:
 
 Each message may also include `turn_id`, `message_id`, and `source`.
 
+Any viewer or downstream tool should treat this JSON shape as the stable file-level contract.
+
 ## Working Conventions
 
 - There is no package manager or compiled build step.
@@ -124,24 +110,23 @@ git status --short
 
 ## Repository Layout
 
-- `extract_chatgpt_html.py`: Converts saved ChatGPT web HTML pages into normalized JSON dialog files.
-- `scripts/capture_chatgpt_tab.sh`: Mac capture helper that saves the current browser conversation HTML into `import/`.
-- `scripts/browser_eval.js`: JXA bridge used by the capture script to run JavaScript in the active browser tab.
-- `viewer/`: Local folder-based viewer/editor for dialogs in `import_json/`.
+- `extract_chatgpt_html.py`: converts saved ChatGPT HTML pages into normalized JSON dialog files.
 - `tests/fixtures/`: public HTML/JSON regression corpus for the extractor.
 - `tests/test_extract_chatgpt_html.py`: extractor regression tests.
+- `scripts/capture_chatgpt_tab.sh`: local macOS capture helper that saves the current browser conversation HTML into `import/`.
+- `scripts/browser_eval.js`: JXA bridge used by the capture script to run JavaScript in the active browser tab.
 - `.github/workflows/release.yml`: GitHub Actions workflow that publishes minimal release bundles for `v*` tags.
-- `import/`: Local runtime directory for captured ChatGPT HTML.
-- `import_json/`: Local runtime directory for extracted JSON.
-- `exports/`: Optional checked-in exports directory.
-- `page_example/`: Example HTML reference material.
-- `pre_ideal_example_markdown/`: Draft/reference markdown content.
-- `EXTRACTOR_README.md`: Detailed notes for the extraction scripts.
-- `CAPTURE_README.md`: Browser-capture manual for the Mac automation flow.
+- `import/`: local runtime directory for captured ChatGPT HTML.
+- `import_json/`: local runtime directory for extracted JSON.
+- `page_example/`: example HTML reference material.
+- `pre_ideal_example_markdown/`: draft/reference markdown content.
+- `EXTRACTOR_README.md`: detailed notes for the extraction flow.
+- `CAPTURE_README.md`: local browser-capture manual for the legacy Mac workflow.
+- `ARCHITECTURE_DECISION.md`: current extractor/viewer/capture boundary decision.
 
 ## Related Documents
 
-- `EXTRACTOR_README.md`: script usage details for capture and extraction.
+- `EXTRACTOR_README.md`: extractor usage details and JSON contract notes.
 - `CAPTURE_README.md`: Mac browser-capture workflow for saving live ChatGPT tabs into `import/` and `import_json/`.
-- `ARCHITECTURE_DECISION.md`: functional module boundaries and recommended future repo split.
+- `ARCHITECTURE_DECISION.md`: practical repo split between `ChatGPTDialogs`, `ContextBuilder`, and future `capture-browser`.
 - `AGENTS.md`: contributor instructions for coding style, validation, and export handling.

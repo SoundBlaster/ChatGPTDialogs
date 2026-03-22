@@ -39,8 +39,6 @@ copy_file "EXTRACTOR_README.md"
 copy_file "CAPTURE_README.md"
 copy_file "scripts/capture_chatgpt_tab.sh"
 copy_file "scripts/browser_eval.js"
-copy_file "viewer/index.html"
-copy_file "viewer/server.py"
 
 rm -f "${artifact_zip}" "${artifact_sums}"
 (cd "${bundle_parent}" && zip -qr "${artifact_zip}" "${release_name}")

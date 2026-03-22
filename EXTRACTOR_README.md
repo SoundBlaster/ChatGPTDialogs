@@ -1,41 +1,66 @@
 # ChatGPTDialogs Extraction Flow
 
-Коротко: репозиторий строится вокруг сохранения открытого ChatGPT HTML, извлечения JSON и регрессионных тестов на публичных fixture-файлах.
+Коротко: этот репозиторий отвечает за преобразование сохраненного ChatGPT HTML в нормализованный JSON и за регрессионные тесты на публичных fixture-файлах.
 
 ## Основной поток
 
-1. Сохранить открытую страницу ChatGPT:
+1. Преобразовать сохраненную HTML-страницу в JSON:
 
 ```bash
-make capture-browser
+python3 extract_chatgpt_html.py path/to/dialog.html -o path/to/dialog.json
 ```
 
-2. Сохранить страницу и сразу получить JSON:
+2. Пакетно обработать локальные HTML-файлы из `import/`:
 
 ```bash
-make capture-browser-extract
+make extract-all
 ```
 
-3. Открыть viewer для локальных JSON:
-
-```bash
-make serve-viewer
-```
-
-4. Прогнать регрессии экстрактора:
+3. Прогнать регрессии экстрактора:
 
 ```bash
 make test
 ```
 
+4. При необходимости сохранить открытую страницу из браузера в локальные runtime-каталоги:
+
+```bash
+make capture-browser
+make capture-browser-extract
+```
+
+5. Открыть полученные JSON в репозитории `ContextBuilder`, указав ему директорию `import_json/` или другую директорию с совместимыми JSON-файлами.
+
+## JSON-контракт
+
+Экстрактор пишет файлы со стабильной верхнеуровневой формой:
+
+- `title`
+- `source_file`
+- `message_count`
+- `messages`
+
+Каждое сообщение должно содержать:
+
+- `role`
+- `content`
+
+Дополнительно могут присутствовать:
+
+- `turn_id`
+- `message_id`
+- `source`
+
+Именно этот файловый контракт должен читать `ContextBuilder`.
+
 ## Основные файлы
 
-- `scripts/capture_chatgpt_tab.sh`: macOS-скрипт захвата активной вкладки браузера
-- `scripts/browser_eval.js`: JXA-мост для выполнения JavaScript в браузере
 - `extract_chatgpt_html.py`: преобразует сохраненный HTML в JSON
 - `tests/fixtures/html/`: публичные HTML-файлы для тестов
 - `tests/fixtures/json/`: golden JSON для тестов
 - `tests/fixtures/regressions/`: точечные regression-кейсы
+- `scripts/capture_chatgpt_tab.sh`: локальный macOS-скрипт захвата активной вкладки браузера
+- `scripts/browser_eval.js`: JXA-мост для выполнения JavaScript в браузере
 
 ## Каталоги данных
 
@@ -45,7 +70,7 @@ make test
 
 ## Примечания
 
-- Для работы на macOS нужны Automation permissions для управления браузером
+- Для работы browser capture на macOS нужны Automation permissions для управления браузером
 - Поддерживаются `Safari`, `Google Chrome`, `Brave Browser`, `Chromium`
 - Если ChatGPT не прогрузил весь диалог, увеличьте `MAX_SCROLLS` и `SCROLL_PAUSE`
 - Если меняется DOM ChatGPT, сначала обновляй экстрактор, затем фиксируй новые fixtures и только после этого обновляй golden JSON

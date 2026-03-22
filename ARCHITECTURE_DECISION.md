@@ -1,342 +1,113 @@
-# Architecture Decision: Functional Module Breakdown
+# Architecture Decision: Split Extractor, Viewer, and Capture Boundaries
 
 ## Status
 
-Proposed and recommended for the next rebuild.
+Accepted for the current repository split.
 
 ## Context
 
-The current repository already contains the main capabilities of the tool, but they are assembled as a small set of scripts rather than as explicit modules:
+The original repository mixed three different concerns:
 
 - browser capture on macOS
 - HTML-to-dialog extraction
-- file-system storage for captured HTML and extracted JSON
-- local viewer API
-- local viewer UI
-- `make`-based orchestration
+- local viewer API and viewer web UI
 
-That is fine for proving the workflow, but not ideal for a future rebuild across new repositories.
+Those parts change for different reasons and should not be treated as one product surface.
 
-The main architectural risk is not scale. It is boundary drift:
+The practical problem is not scale. It is boundary drift:
 
-- browser automation mixed with workflow policy
-- parsing mixed with file naming and file paths
-- file storage mixed with HTTP transport
-- viewer UI mixed with dialog editing rules
-
-If this is rebuilt without strong boundaries, the next version will become another pile of scripts with better packaging.
+- browser automation gets coupled to viewer behavior
+- extractor changes get hidden inside UI repos
+- the JSON contract becomes implicit instead of explicit
+- a viewer repo starts inheriting platform-specific capture code it does not need
 
 ## Decision
 
-Break the system by stable function, not by current file, not by UI screen, and not by technology.
+Split by function and by rate of change:
 
-The future system should be rebuilt around six minimal specialized modules:
+1. `ChatGPTDialogs` is the extractor repository.
+   It owns `extract-html`, the dialog JSON contract, regression fixtures, and minimal local import workflows.
 
-1. `dialog-domain`
-2. `capture-browser`
-3. `extract-html`
-4. `dialog-store`
-5. `viewer-api`
-6. `viewer-web`
+2. `ContextBuilder` is the viewer repository.
+   It owns `viewer-web` and `viewer-api` for already extracted JSON dialogs.
 
-A seventh thin module, `workflow-cli`, should compose them for local use, but it should contain almost no domain logic.
+3. `capture-browser` is a separate concern.
+   Do not move browser-capture code into `ContextBuilder`.
+   It may remain temporarily in `ChatGPTDialogs` history or be extracted later into a separate private repository or module.
 
 ## Why This Boundary Is Correct
 
-These are the parts that change for different reasons:
+- extractor logic changes when the ChatGPT DOM changes
+- viewer logic changes when editing UX changes
+- browser capture changes when browsers, permissions, or automation APIs change
+- the dialog JSON contract should change the least
 
-- browser capture changes because browsers, permissions, and automation APIs change
-- extraction changes because ChatGPT page structure changes
-- storage changes because you may move from local files to another backing store
-- API changes because transport and auth change
-- web viewer changes because UX changes
-- domain contracts should change the least
+That means:
 
-That means the module boundary should follow change pressure, not language or runtime.
+- `ChatGPTDialogs` should stay extractor-first
+- `ContextBuilder` should stay viewer-first
+- browser capture should not leak into the viewer repo
 
-## Recommended Modules
+## Functional Module Mapping
 
-### 1. `dialog-domain`
+The conceptual modules still matter, but they map to repositories differently:
 
-Purpose:
-
-- single source of truth for all core data contracts
-
-Owns:
-
-- dialog schema
-- message schema
-- capture metadata schema
-- file naming policy
-- title normalization
-- identifiers and validation
-
-Must not depend on:
-
-- browser automation
-- filesystem
-- HTTP
-- UI
-
-Example responsibilities:
-
-- define `Dialog`
-- define `Message`
-- define `CaptureResult`
-- define `slugify_title(title)`
-
-This should be the most stable module and the first one extracted.
-
-### 2. `capture-browser`
+### `dialog-domain`
 
 Purpose:
 
-- talk to the browser and bring back raw page state
+- define the stable dialog JSON contract shared between repos
 
-Owns:
+Lives primarily in:
 
-- browser selection
-- browser activation/focus
-- JavaScript evaluation in browser tab
-- auto-scroll logic
-- final page HTML capture
-- capture completion notifications
+- `ChatGPTDialogs` documentation and extractor output
 
-Must not own:
-
-- HTML parsing into dialog messages
-- JSON storage format
-- viewer logic
-
-Inputs:
-
-- browser selection policy
-- capture timing config
-
-Outputs:
-
-- raw HTML
-- page title
-- page URL
-- capture metadata
-
-This is an adapter module. It is the most platform-specific part.
-
-### 3. `extract-html`
+### `extract-html`
 
 Purpose:
 
-- transform raw saved ChatGPT HTML into normalized dialog data
+- transform saved ChatGPT HTML into normalized dialog JSON
 
-Owns:
+Lives in:
 
-- HTML parsing
-- turn discovery
-- message extraction
-- content cleanup
-- normalized dialog assembly
+- `ChatGPTDialogs`
 
-Must not own:
-
-- browser automation
-- HTTP routes
-- UI editing
-
-Inputs:
-
-- HTML bytes or string
-
-Outputs:
-
-- `Dialog`
-
-This should remain pure and testable.
-
-### 4. `dialog-store`
+### `viewer-api`
 
 Purpose:
 
-- persist and retrieve raw captures and extracted dialogs
+- expose list/read/write/delete operations for dialog JSON files
 
-Owns:
+Lives in:
 
-- local file layout
-- list/read/write/delete operations
-- collision handling
-- import directory policy
-- output directory policy
+- `ContextBuilder`
 
-Must not own:
-
-- browser automation
-- parsing rules
-- UI rendering
-
-Inputs:
-
-- `CaptureResult`
-- `Dialog`
-
-Outputs:
-
-- stored file paths
-- file listings
-- loaded dialogs
-
-This is where local files live today, but later it could be backed by a database, S3, git, or another store.
-
-### 5. `viewer-api`
+### `viewer-web`
 
 Purpose:
 
-- expose store operations to a client
+- browse and edit extracted dialogs through a local UI
 
-Owns:
+Lives in:
 
-- HTTP transport
-- route definitions
-- request validation
-- JSON response format
+- `ContextBuilder`
 
-Must not own:
-
-- browser capture
-- HTML parsing
-- UI behavior
-
-Inputs:
-
-- store interface
-
-Outputs:
-
-- list dialogs
-- load dialog
-- write dialog
-- delete dialog
-
-This module should depend on `dialog-store`, not on the browser or parser directly.
-
-### 6. `viewer-web`
+### `capture-browser`
 
 Purpose:
 
-- provide a local UI for browsing and editing dialogs
+- capture raw HTML from a live browser tab
 
-Owns:
+Lives in:
 
-- sidebar
-- message rendering
-- collapse/expand state
-- branch editor UX
-- save/delete interactions
+- outside `ContextBuilder`
+- temporarily in `ChatGPTDialogs` only until it gets its own home
 
-Must not own:
+## Interface Contract To Freeze Early
 
-- filesystem access
-- browser automation
-- extraction rules
-
-It should know only the API contract, not how dialogs are stored.
-
-### 7. `workflow-cli`
-
-Purpose:
-
-- thin orchestration layer for local development
-
-Owns:
-
-- CLI commands
-- `make` targets
-- user-oriented local workflows
-
-Must not own:
-
-- parsing logic
-- capture logic internals
-- domain schema
-
-Today this is mostly the `Makefile`. In the rebuild it can remain small.
-
-## Dependency Rule
-
-All dependencies should point inward toward stable logic.
-
-```mermaid
-flowchart LR
-  workflow["workflow-cli"] --> capture["capture-browser"]
-  workflow --> extract["extract-html"]
-  workflow --> store["dialog-store"]
-  workflow --> api["viewer-api"]
-  api --> store
-  viewer["viewer-web"] --> api
-  capture --> domain["dialog-domain"]
-  extract --> domain
-  store --> domain
-  api --> domain
-  viewer --> domain
-```
-
-Interpretation:
-
-- `dialog-domain` is the center
-- adapters sit around it
-- orchestration sits above them
-- UI talks to API, not to storage directly
-
-## What To Extract First
-
-Do not split everything at once.
-
-Recommended order:
-
-1. extract `dialog-domain`
-2. extract `extract-html`
-3. extract `dialog-store`
-4. extract `viewer-api`
-5. extract `viewer-web`
-6. extract `capture-browser`
-7. leave `workflow-cli` last
-
-Why this order:
-
-- the domain and parser are the easiest to stabilize
-- store and API then become straightforward wrappers
-- capture is the noisiest platform adapter, so extract it only after contracts are stable
-
-## Suggested Future Repos
-
-Keep the number of repos low at first.
-
-Recommended first split:
-
-1. `gpt-dialog-core`
-   - `dialog-domain`
-   - `extract-html`
-   - shared tests
-
-2. `gpt-capture-mac`
-   - `capture-browser`
-   - local notification adapter
-
-3. `gpt-dialog-workbench`
-   - `dialog-store`
-   - `viewer-api`
-   - `viewer-web`
-   - `workflow-cli`
-
-This is the minimum practical split.
-
-Do not create six repositories immediately. That would optimize for conceptual purity at the cost of real development speed.
-
-## Interface Contracts To Freeze Early
-
-If you want the rebuild to succeed, freeze these interfaces before moving code:
+`ContextBuilder` should read any directory containing JSON files with this minimum shape:
 
 ### `Dialog`
-
-Minimum stable fields:
 
 - `title`
 - `source_file`
@@ -345,101 +116,68 @@ Minimum stable fields:
 
 ### `Message`
 
-Minimum stable fields:
-
 - `role`
 - `content`
 - optional `message_id`
 - optional `turn_id`
 - optional `source`
 
-### `CaptureResult`
+This file-level contract is the integration point between the two repositories.
 
-Minimum stable fields:
+## Practical Repo Split
 
-- `title`
-- `url`
-- `html`
-- `captured_at`
-- `browser`
-
-### `DialogStore`
-
-Required operations:
-
-- `list_dialogs()`
-- `read_dialog(name)`
-- `write_dialog(name, dialog, overwrite)`
-- `delete_dialog(name)`
-- `write_capture(name, html)`
-
-### `BrowserCapture`
-
-Required operations:
-
-- `select_browser()`
-- `activate_browser(browser)`
-- `scroll_until_stable(browser, config)`
-- `capture_title(browser)`
-- `capture_url(browser)`
-- `capture_html(browser)`
-
-## Current Mapping From Today’s Files
-
-- `scripts/capture_chatgpt_tab.sh`
-  - should become mostly `workflow-cli`
-  - browser-specific parts should move to `capture-browser`
-  - naming should move to `dialog-domain`
-
-- `scripts/browser_eval.js`
-  - belongs to `capture-browser`
+### Keep in `ChatGPTDialogs`
 
 - `extract_chatgpt_html.py`
-  - belongs to `extract-html`
-  - title normalization and slugging pieces should move to `dialog-domain`
+- `tests/fixtures/`
+- `tests/test_extract_chatgpt_html.py`
+- documentation about the HTML-to-JSON extraction flow
+- minimal local import workflow around `import/` and `import_json/`
+
+### Move to `ContextBuilder`
 
 - `viewer/server.py`
-  - belongs to `viewer-api`
-  - file IO should move out into `dialog-store`
+- `viewer/index.html`
+- viewer usage documentation
+- local viewer-oriented `Makefile` or CLI entrypoints
+
+### Do Not Move to `ContextBuilder`
+
+- `scripts/capture_chatgpt_tab.sh`
+- `scripts/browser_eval.js`
+- browser-automation-specific docs and assumptions
+
+## Current File Mapping
+
+- `extract_chatgpt_html.py`
+  - stays in `ChatGPTDialogs`
+  - remains the main extractor entry point
+
+- `tests/fixtures/` and `tests/test_extract_chatgpt_html.py`
+  - stay in `ChatGPTDialogs`
+  - remain the regression corpus and extractor test suite
+
+- `viewer/server.py`
+  - moves to `ContextBuilder`
+  - represents `viewer-api`
 
 - `viewer/index.html`
-  - belongs to `viewer-web`
+  - moves to `ContextBuilder`
+  - represents `viewer-web`
 
-- `Makefile`
-  - belongs to `workflow-cli`
+- `scripts/capture_chatgpt_tab.sh` and `scripts/browser_eval.js`
+  - stay out of `ContextBuilder`
+  - belong to a later `capture-browser` extraction path
+
+## Operational Contract Between Repositories
+
+- `ChatGPTDialogs` produces JSON files in `import_json/` or another chosen output directory
+- `ContextBuilder` reads JSON files from an explicitly configured directory
+- the default collaboration path can be `ChatGPTDialogs/import_json/`, but the viewer must not hardcode that repository
 
 ## What Not To Do
 
-Avoid these mistakes:
-
-- do not split by script filename
-- do not make browser capture and HTML extraction one module
-- do not let the viewer write directly to the filesystem without a store boundary
-- do not duplicate dialog schema in Python and JavaScript without a shared contract
-- do not create many tiny repos before the interfaces are stable
-
-## Practical Next Step For This Repo
-
-If you want to prepare this repository before moving code to new repos, do this next:
-
-1. create a small `dialog-domain` package inside this repo
-2. move naming and dialog schema helpers there
-3. refactor `extract_chatgpt_html.py` to consume that package
-4. refactor `viewer/server.py` so file IO is behind a small store interface
-5. refactor `scripts/capture_chatgpt_tab.sh` so browser selection and notification are isolated
-
-That would give you the future repo boundaries without the operational cost of splitting repositories yet.
-
-## Final Decision
-
-The system should be rebuilt as a function-first architecture with:
-
-- one stable core contract layer
-- one browser capture adapter
-- one pure HTML extraction module
-- one storage module
-- one API module
-- one web UI module
-- one thin workflow layer
-
-That is the smallest breakdown that is still worth preserving across future repositories.
+- do not put browser capture into `ContextBuilder`
+- do not make the viewer depend on raw HTML parsing
+- do not make extractor tests depend on viewer code
+- do not duplicate the dialog contract informally across repos without documenting it
