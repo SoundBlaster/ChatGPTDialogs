@@ -6,33 +6,38 @@ This repository stores ChatGPTDialogs source material, extraction utilities, and
 
 - `README.md`: project overview.
 - `EXTRACTOR_README.md`: usage notes for the extraction scripts.
-- `conversation_extractor.py`: Python script that reads `conversations.json` and writes normalized exports to `conversation_exports/`.
-- `exporter.js`, `active_thread_exporter.js`, `complete_exporter.js`: browser-side extraction scripts.
-- `exports/`: checked-in conversation exports and status documents, such as `MANIFEST.json`, `EXTRACTION_STATUS.md`, and per-conversation `.json` files.
+- `extract_chatgpt_html.py`: Python script that converts saved ChatGPT HTML pages into normalized JSON.
+- `scripts/capture_chatgpt_tab.sh` and `scripts/browser_eval.js`: browser-capture workflow for the active ChatGPT tab.
+- `viewer/server.py`: local viewer server for extracted dialogs.
+- `tests/fixtures/`: checked-in public HTML/JSON regression corpus for the extractor.
+- `import/` and `import_json/`: local runtime directories for captures and extracted JSON.
+- `exports/`: optional checked-in conversation exports.
 - `page_example/` and `pre_ideal_example_markdown/`: example reference material.
 
 ## Build, Test, and Development Commands
 
 There is no package manager or compiled build step. Use the scripts directly:
 
-- `python conversation_extractor.py`: converts a ChatGPT export file named `conversations.json` into `conversation_exports/`.
-- Paste `complete_exporter.js` into the browser console on ChatGPT to generate conversation JSON files.
+- `make capture-browser`: captures the active ChatGPT browser tab into `import/`.
+- `make capture-browser-extract`: captures the active browser tab and writes extracted JSON into `import_json/`.
+- `make serve-viewer`: starts the local viewer for extracted dialogs.
+- `make test`: runs the extractor regression suite against checked-in fixtures.
 - `git status --short`: verify only the intended export or documentation files changed.
 
 ## Coding Style & Naming Conventions
 
 - Use ASCII unless a file already contains Russian or other non-ASCII text.
 - Python: 4-space indentation, small focused functions, standard library only when practical.
-- JavaScript: prefer clear, browser-console-friendly code with explicit variable names.
-- File naming for exports should follow `slugified_title.json` or `{slug}_{conversation_id}.json`, matching the existing `exports/` contents.
+- JavaScript: prefer clear browser-automation-friendly code with explicit variable names.
+- File naming for generated artifacts should follow the current title-derived slug format used in `import/` and `import_json/`.
 
 ## Testing Guidelines
 
-No automated test suite is defined. Validate changes manually:
+Validate changes with the checked-in regression corpus:
 
-- Run the extractor against a known `conversations.json`.
-- Confirm the output JSON parses and contains `title`, `conversation_id`, and `messages`.
-- Spot-check the `exports/` status files if you update extraction progress.
+- Run `make test`.
+- If you change capture behavior, also run `make capture-browser-extract` against a known ChatGPT page.
+- Confirm the output JSON parses and contains `title`, `source_file`, `message_count`, and `messages`.
 
 ## Commit & Pull Request Guidelines
 
@@ -46,4 +51,4 @@ For pull requests:
 
 ## Contributor Notes
 
-Do not overwrite existing exported data unless that is the explicit goal. When adding new exports, keep the manifest and status documents in sync with the new files.
+Do not overwrite existing exported data unless that is the explicit goal. Keep local runtime output in `import/` and `import_json/`; add only stable public fixtures under `tests/fixtures/`.

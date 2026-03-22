@@ -1,0 +1,2107 @@
+<section
+    class="text-token-text-primary w-full focus:outline-none [--shadow-height:45px] has-data-writing-block:pointer-events-none has-data-writing-block:-mt-(--shadow-height) has-data-writing-block:pt-(--shadow-height) [&amp;:has([data-writing-block])&gt;*]:pointer-events-auto scroll-mt-[calc(var(--header-height)+min(200px,max(70px,20svh)))]"
+    dir="auto"
+    data-turn-id="51746948-5e4c-4c15-80d8-d3bc1115d0b3"
+    data-testid="conversation-turn-6"
+    data-scroll-anchor="true"
+    data-turn="assistant"
+>
+    <h4 class="sr-only select-none">ChatGPT said:</h4>
+    <div
+        class="text-base my-auto mx-auto pb-10 [--thread-content-margin:var(--thread-content-margin-xs,calc(var(--spacing)*4))] @w-sm/main:[--thread-content-margin:var(--thread-content-margin-sm,calc(var(--spacing)*6))] @w-lg/main:[--thread-content-margin:var(--thread-content-margin-lg,calc(var(--spacing)*16))] px-(--thread-content-margin)"
+    >
+        <div
+            class="[--thread-content-max-width:40rem] @w-lg/main:[--thread-content-max-width:48rem] mx-auto max-w-(--thread-content-max-width) flex-1 group/turn-messages focus-visible:outline-hidden relative flex w-full min-w-0 flex-col agent-turn"
+        >
+            <div class="flex max-w-full flex-col gap-4 grow">
+                <div
+                    class="absolute flex h-8 w-3 origin-center items-center justify-center"
+                    style="opacity: 0; transform: scale(0)"
+                >
+                    <div
+                        class="bg-token-text-primary h-3 w-3 rounded-full"
+                    ></div>
+                </div>
+                <div class="relative my-1 min-h-6">
+                    <div
+                        class="relative flex origin-top-left flex-col gap-2 overflow-x-clip rtl:origin-top-right"
+                        style="opacity: 1; transform: none"
+                    >
+                        <div class="relative w-full text-start">
+                            <div
+                                class="flex w-full flex-row items-start justify-between gap-4 text-start"
+                            >
+                                <button
+                                    type="button"
+                                    class="flex min-w-0 shrink-1 gap-0.5 items-center"
+                                >
+                                    <span class="font-medium w-full"
+                                        ><span
+                                            class="flex gap-1 text-start align-middle items-center truncate text-token-text-secondary hover:text-token-text-primary dark:hover:text-token-text-primary dark:text-[var(--interactive-label-tertiary-default)]"
+                                            style="opacity: 1"
+                                            ><span
+                                                class="flex min-w-0 gap-1 items-center"
+                                                ><span class="min-w-0 truncate"
+                                                    >Thought for 57s</span
+                                                ></span
+                                            ><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                aria-hidden="true"
+                                                data-rtl-flip=""
+                                                class="icon-xs"
+                                            >
+                                                <use
+                                                    href="/cdn/assets/sprites-core-cohbnghc.svg#b140e7"
+                                                    fill="currentColor"
+                                                ></use></svg></span
+                                    ></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            class="max-w-[calc(0.8*var(--thread-content-max-width,40rem))]"
+                        ></div>
+                    </div>
+                </div>
+                <div
+                    data-message-author-role="assistant"
+                    data-message-id="94599256-97f3-4e05-ba77-15703ece0887"
+                    data-turn-start-message="true"
+                    dir="auto"
+                    tabindex="0"
+                    data-message-model-slug="gpt-5-4-thinking"
+                    class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 text-start break-words whitespace-normal outline-none keyboard-focused:focus-ring [.text-message+&amp;]:mt-1"
+                >
+                    <div class="flex w-full flex-col gap-1 empty:hidden">
+                        <div
+                            class="markdown prose dark:prose-invert w-full wrap-break-word dark markdown-new-styling"
+                        >
+                            <p data-start="0" data-end="7">Привет.</p>
+                            <h2 data-start="9" data-end="17">TL;DR</h2>
+                            <p data-start="19" data-end="868">
+                                <strong data-start="19" data-end="214"
+                                    >Да, atproto может подойти для MIR как
+                                    базовый слой, но только если ты используешь
+                                    его не как “всю trust system целиком”, а как
+                                    <code data-start="148" data-end="201"
+                                        >identity + user-owned data + federation
+                                        + discovery</code
+                                    >
+                                    substrate.</strong
+                                ><br data-start="214" data-end="217" />
+                                Для
+                                <strong data-start="221" data-end="229"
+                                    >Here</strong
+                                >
+                                это особенно хорошо, если сеть у тебя про
+                                <strong data-start="272" data-end="407"
+                                    >публичные социальные связи, переносимость
+                                    аккаунтов, подписанные пользовательские
+                                    записи, кастомные схемы и вычисляемые
+                                    trust-views</strong
+                                >.<br data-start="408" data-end="411" />
+                                Но если MIR должен быть
+                                <strong data-start="435" data-end="555"
+                                    >private-first, capability-first,
+                                    credential-heavy, с сильной zero-trust
+                                    семантикой и fine-grained policy
+                                    enforcement</strong
+                                >, то
+                                <strong data-start="560" data-end="590"
+                                    >atproto alone недостаточен</strong
+                                >: он исторически и архитектурно оптимизирован
+                                под
+                                <strong data-start="640" data-end="663"
+                                    >public conversation</strong
+                                >, а поддержка ограниченной аудитории и richer
+                                private content у них долгое время была и
+                                остается отдельным направлением развития, а не
+                                зрелым фундаментом “из коробки”.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 120px"
+                                        ><a
+                                            href="https://docs.bsky.app/docs/advanced-guides/atproto?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/docs/advanced-guides/atproto?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 120px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+4</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+4</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+4</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h2 data-start="870" data-end="896">
+                                Концептуальный чек-лист
+                            </h2>
+                            <p data-start="898" data-end="947">
+                                Перед выбором ground layer я бы проверил 6
+                                вещей:
+                            </p>
+                            <ol data-start="949" data-end="1445">
+                                <li data-start="949" data-end="994">
+                                    <p data-start="952" data-end="994">
+                                        <strong data-start="952" data-end="986"
+                                            >Public-first или
+                                            private-first</strong
+                                        >
+                                        у MIR
+                                    </p>
+                                </li>
+                                <li data-start="995" data-end="1059">
+                                    <p data-start="998" data-end="1059">
+                                        <strong data-start="998" data-end="1015"
+                                            >Identity root</strong
+                                        >: DID достаточно или нужен свой trust
+                                        root
+                                    </p>
+                                </li>
+                                <li data-start="1060" data-end="1158">
+                                    <p data-start="1063" data-end="1158">
+                                        <strong
+                                            data-start="1063"
+                                            data-end="1082"
+                                            >Canonical truth</strong
+                                        >: что является источником истины — user
+                                        repo или внешний credential ledger
+                                    </p>
+                                </li>
+                                <li data-start="1159" data-end="1251">
+                                    <p data-start="1162" data-end="1251">
+                                        <strong
+                                            data-start="1162"
+                                            data-end="1181"
+                                            >Trust semantics</strong
+                                        >: trust — это label/view или строгая
+                                        верифицируемая credential model
+                                    </p>
+                                </li>
+                                <li data-start="1252" data-end="1348">
+                                    <p data-start="1255" data-end="1348">
+                                        <strong
+                                            data-start="1255"
+                                            data-end="1278"
+                                            >Revocation &amp; policy</strong
+                                        >: нужны ли capability grants, scopes,
+                                        delegations, revocation chains
+                                    </p>
+                                </li>
+                                <li data-start="1349" data-end="1445">
+                                    <p data-start="1352" data-end="1445">
+                                        <strong
+                                            data-start="1352"
+                                            data-end="1381"
+                                            >Execution vs social trust</strong
+                                        >: MIR — про людей/контент или еще и про
+                                        агентов/процессы/рантайм
+                                    </p>
+                                </li>
+                            </ol>
+                            <hr data-start="1447" data-end="1450" />
+                            <h2 data-start="1452" data-end="1478">
+                                Мой вывод в одной фразе
+                            </h2>
+                            <p data-start="1480" data-end="1784">
+                                <strong data-start="1480" data-end="1580"
+                                    >atproto хорошо подходит как public social
+                                    substrate для Here, но не как полный MIR
+                                    trust kernel.</strong
+                                ><br data-start="1580" data-end="1583" />
+                                То есть:
+                                <strong data-start="1592" data-end="1746"
+                                    >да для social graph и signed social facts;
+                                    нет как единственный слой для authority,
+                                    attestation, policy, private trust edges и
+                                    zero-trust enforcement.</strong
+                                >
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 84px"
+                                        ><a
+                                            href="https://atproto.com/specs/atp?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/specs/atp?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 84px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <hr data-start="1786" data-end="1789" />
+                            <h2 data-start="1791" data-end="1834">
+                                Что atproto тебе реально дает из коробки
+                            </h2>
+                            <h3 data-start="1836" data-end="1863">
+                                1) Переносимую identity
+                            </h3>
+                            <p data-start="1864" data-end="2147">
+                                atproto уже строится вокруг
+                                <strong data-start="1892" data-end="1914"
+                                    >DID-based identity</strong
+                                >, где handle — лишь человекочитаемое имя, а
+                                аккаунт можно переносить между PDS. Это очень
+                                хорошо ложится на идею, что пользователь в Here
+                                не должен быть заперт в одном хосте или одном
+                                приложении.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 83px"
+                                        ><a
+                                            href="https://atproto.com/guides/glossary?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/guides/glossary?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 83px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="2149" data-end="2178">
+                                2) User-owned signed data
+                            </h3>
+                            <p data-start="2179" data-end="2527">
+                                У каждого аккаунта есть свой
+                                <strong data-start="2208" data-end="2236"
+                                    >self-authenticating repo</strong
+                                >: обновления подписываются, repo можно
+                                экспортировать в
+                                <strong data-start="2292" data-end="2299"
+                                    >CAR</strong
+                                >, синхронизировать и переносить. Для Here это
+                                почти идеальный фундамент, если ты хочешь
+                                говорить: “социальные артефакты принадлежат
+                                пользователю, а платформа строит только derived
+                                services”.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 83px"
+                                        ><a
+                                            href="https://atproto.com/specs/repository?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/specs/repository?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 83px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="2529" data-end="2559">
+                                3) Extensible schema layer
+                            </h3>
+                            <p data-start="2560" data-end="2793">
+                                Через
+                                <strong data-start="2566" data-end="2577"
+                                    >Lexicon</strong
+                                >
+                                и
+                                <strong data-start="2580" data-end="2598"
+                                    >custom schemas</strong
+                                >
+                                ты можешь определить свои сущности, а не жить
+                                только в
+                                <code data-start="2654" data-end="2666"
+                                    >app.bsky.*</code
+                                >. Это ключевой плюс: MIR можно моделировать
+                                собственными NSID-схемами, не ломая протокол.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 83px"
+                                        ><a
+                                            href="https://atproto.com/specs/lexicon?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/specs/lexicon?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 83px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="2795" data-end="2823">
+                                4) Federation + firehose
+                            </h3>
+                            <p data-start="2824" data-end="3118">
+                                Есть готовая модель
+                                <strong data-start="2844" data-end="2869"
+                                    >PDS / Relay / AppView</strong
+                                >, плюс
+                                <strong data-start="2876" data-end="2888"
+                                    >firehose</strong
+                                >
+                                для событий. Для Here это означает, что
+                                discovery, recomputation trust-views, ranking,
+                                abuse detection и graph projections можно
+                                строить как downstream-сервисы, не зашивая всё в
+                                один монолит.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 120px"
+                                        ><a
+                                            href="https://docs.bsky.app/docs/advanced-guides/federation-architecture?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/docs/advanced-guides/federation-architecture?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 120px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="3120" data-end="3147">
+                                5) App-neutral accounts
+                            </h3>
+                            <p data-start="3148" data-end="3409">
+                                Сеть уже мыслится как
+                                <strong data-start="3170" data-end="3185"
+                                    >app-neutral</strong
+                                >: один аккаунт может использоваться не только
+                                для микроблогинга. Это полезно именно для твоего
+                                замысла, где Here — не просто “лента постов”, а,
+                                вероятно, trust-driven social environment.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 105px"
+                                        ><a
+                                            href="https://docs.bsky.app/blog/account-management?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/blog/account-management?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 105px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between overflow-hidden"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="3411" data-end="3445">
+                                6) Labelers как trust overlays
+                            </h3>
+                            <p data-start="3446" data-end="3714">
+                                У atproto есть
+                                <strong data-start="3461" data-end="3471"
+                                    >labels</strong
+                                >
+                                и
+                                <strong data-start="3474" data-end="3486"
+                                    >labelers</strong
+                                >
+                                как отдельный слой metadata. Это не полноценная
+                                credential system, но как механизм для
+                                <strong data-start="3574" data-end="3649"
+                                    >overlay trust, reputation, moderation,
+                                    safety hints, community verdicts</strong
+                                >
+                                — очень сильная заготовка.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 84px"
+                                        ><a
+                                            href="https://atproto.com/guides/labels?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/guides/labels?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 84px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <hr data-start="3716" data-end="3719" />
+                            <h2 data-start="3721" data-end="3757">
+                                Где начинается несоответствие MIR
+                            </h2>
+                            <h3 data-start="3759" data-end="3823">
+                                1) atproto проектировался прежде всего для
+                                public social web
+                            </h3>
+                            <p data-start="3824" data-end="4167">
+                                Официальные материалы прямо описывают atproto
+                                как стандарт для
+                                <strong data-start="3887" data-end="3910"
+                                    >public conversation</strong
+                                >
+                                и open social apps. Для Here это отлично, если
+                                ядро продукта — открытая доверенная социальная
+                                сеть. Но если MIR — это deeper trust network,
+                                где значимая часть графа непублична, тут сразу
+                                появляется архитектурный зазор.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 119px"
+                                        ><a
+                                            href="https://docs.bsky.app/docs/advanced-guides/atproto?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/docs/advanced-guides/atproto?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 119px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+1</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="4169" data-end="4244">
+                                2) Private / limited-audience content — не
+                                главная зрелая ось протокола
+                            </h3>
+                            <p data-start="4245" data-end="4676">
+                                Команда atproto сама пишет, что
+                                <strong data-start="4277" data-end="4321"
+                                    >group-private / limited-audience
+                                    content</strong
+                                >
+                                — важная потребность и отдельное направление
+                                roadmap, а E2EE/private features долгое время
+                                были не закрыты как зрелый базовый слой. Это
+                                главный аргумент против того, чтобы класть весь
+                                MIR целиком на atproto, если trust edges,
+                                circles, sealed endorsements и restricted
+                                attestations для тебя не вторичны, а центральны.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 120px"
+                                        ><a
+                                            href="https://docs.bsky.app/blog/2025-protocol-roadmap-spring?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/blog/2025-protocol-roadmap-spring?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 120px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="4678" data-end="4747">
+                                3) Labels — это metadata overlays, а не
+                                root-of-trust credentials
+                            </h3>
+                            <p data-start="4748" data-end="5061">
+                                Labelers хороши для signals и policy overlays,
+                                но они по смыслу ближе к
+                                <strong data-start="4820" data-end="4853"
+                                    >moderation/distribution hints</strong
+                                >, чем к строгой модели verifiable trust claims
+                                с lifecycle, revocation, issuer classes и formal
+                                validation graph. MIR, насколько я понимаю твой
+                                замысел, хочет большего.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 83px"
+                                        ><a
+                                            href="https://atproto.com/specs/label?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/specs/label?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 83px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="5063" data-end="5121">
+                                4) Ecosystem still has practical centralization
+                                points
+                            </h3>
+                            <p data-start="5122" data-end="5519">
+                                Хотя протокол федеративный, текущая экосистема
+                                всё еще имеет заметные operational centers:
+                                например, Bluesky использует Entryway для
+                                account management, а PLC identity system сама
+                                команда описывает как требующую дальнейшей
+                                децентрализации и governance improvements. Это
+                                не “фатальный дефект”, но как ground layer для
+                                Trust Network это надо учитывать трезво.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 120px"
+                                        ><a
+                                            href="https://docs.bsky.app/docs/advanced-guides/entryway?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/docs/advanced-guides/entryway?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 120px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="5521" data-end="5597">
+                                5) atproto решает transport/data authenticity, а
+                                не zero-trust execution
+                            </h3>
+                            <p data-start="5598" data-end="6009">
+                                Протокол хорошо решает
+                                <strong data-start="5621" data-end="5647"
+                                    >кто опубликовал запись</strong
+                                >,
+                                <strong data-start="5649" data-end="5669"
+                                    >как ее перенести</strong
+                                >,
+                                <strong data-start="5671" data-end="5698"
+                                    >как ее синхронизировать</strong
+                                >,
+                                <strong data-start="5700" data-end="5724"
+                                    >как на нее ссылаться</strong
+                                >. Но он не является нативной системой для
+                                <strong data-start="5766" data-end="5864"
+                                    >capability passports, execution sandboxing,
+                                    remote attestation, least-privilege runtime
+                                    policy</strong
+                                >. Если MIR касается не только социальных
+                                связей, но и доверенных агентных сущностей,
+                                одного atproto мало.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 83px"
+                                        ><a
+                                            href="https://atproto.com/specs/atp?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/specs/atp?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 83px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <hr data-start="6011" data-end="6014" />
+                            <h2 data-start="6016" data-end="6048">
+                                Практический verdict для Here
+                            </h2>
+                            <h3 data-start="6050" data-end="6087">
+                                Подходит хорошо, если Here — это:
+                            </h3>
+                            <ul data-start="6088" data-end="6303">
+                                <li data-start="6088" data-end="6127">
+                                    <p data-start="6090" data-end="6127">
+                                        <strong
+                                            data-start="6090"
+                                            data-end="6127"
+                                            >public trust-aware social
+                                            network</strong
+                                        >
+                                    </p>
+                                </li>
+                                <li data-start="6128" data-end="6161">
+                                    <p data-start="6130" data-end="6161">
+                                        user-owned identity and content
+                                    </p>
+                                </li>
+                                <li data-start="6162" data-end="6184">
+                                    <p data-start="6164" data-end="6184">
+                                        переносимые аккаунты
+                                    </p>
+                                </li>
+                                <li data-start="6185" data-end="6221">
+                                    <p data-start="6187" data-end="6221">
+                                        открытые/полуоткрытые social edges
+                                    </p>
+                                </li>
+                                <li data-start="6222" data-end="6247">
+                                    <p data-start="6224" data-end="6247">
+                                        вычисляемые trust feeds
+                                    </p>
+                                </li>
+                                <li data-start="6248" data-end="6303">
+                                    <p data-start="6250" data-end="6303">
+                                        community moderation и composable
+                                        reputation overlays
+                                    </p>
+                                </li>
+                            </ul>
+                            <p data-start="6305" data-end="6422">
+                                В таком сценарии atproto действительно может
+                                быть очень сильным ground layer.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 84px"
+                                        ><a
+                                            href="https://atproto.com/guides/overview?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/guides/overview?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 84px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="6424" data-end="6460">
+                                Подходит плохо, если Here — это:
+                            </h3>
+                            <ul data-start="6461" data-end="6705">
+                                <li data-start="6461" data-end="6494">
+                                    <p data-start="6463" data-end="6494">
+                                        <strong
+                                            data-start="6463"
+                                            data-end="6494"
+                                            >private-first trust network</strong
+                                        >
+                                    </p>
+                                </li>
+                                <li data-start="6495" data-end="6521">
+                                    <p data-start="6497" data-end="6521">
+                                        глубокая credential mesh
+                                    </p>
+                                </li>
+                                <li data-start="6522" data-end="6556">
+                                    <p data-start="6524" data-end="6556">
+                                        capability-based authority graph
+                                    </p>
+                                </li>
+                                <li data-start="6557" data-end="6586">
+                                    <p data-start="6559" data-end="6586">
+                                        strong revocation semantics
+                                    </p>
+                                </li>
+                                <li data-start="6587" data-end="6633">
+                                    <p data-start="6589" data-end="6633">
+                                        encrypted subgraphs / circles /
+                                        compartments
+                                    </p>
+                                </li>
+                                <li data-start="6634" data-end="6705">
+                                    <p data-start="6636" data-end="6705">
+                                        machine-verifiable policy enforcement as
+                                        first-class protocol concern
+                                    </p>
+                                </li>
+                            </ul>
+                            <p data-start="6707" data-end="6864">
+                                Тогда atproto логичнее использовать только как
+                                внешний social/discovery слой, а MIR делать
+                                отдельным trust substrate.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 120px"
+                                        ><a
+                                            href="https://docs.bsky.app/blog/2025-protocol-roadmap-spring?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/blog/2025-protocol-roadmap-spring?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 120px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <hr data-start="6866" data-end="6869" />
+                            <h2 data-start="6871" data-end="6917">
+                                Архитектура, которую я бы тебе рекомендовал
+                            </h2>
+                            <p data-start="6919" data-end="7004">
+                                Не класть MIR “внутрь Bluesky-like semantics”, а
+                                сделать
+                                <strong data-start="6976" data-end="7003"
+                                    >двухслойную конструкцию</strong
+                                >:
+                            </p>
+                            <pre
+                                class="overflow-visible! px-0!"
+                                data-start="7006"
+                                data-end="7402"
+                            ><div class="relative w-full mt-4 mb-1"><div class=""><div class="relative"><div class="h-full min-h-0 min-w-0"><div class="h-full min-h-0 min-w-0" style="width: 100%; transform: none;"><div class="border border-token-border-light border-radius-3xl corner-superellipse/1.1 rounded-3xl"><div class="h-full w-full border-radius-3xl bg-token-bg-elevated-secondary corner-superellipse/1.1 overflow-clip rounded-3xl lxnfua_clipPathFallback"><div class="pointer-events-none absolute end-1.5 top-1 z-2 md:end-2 md:top-1"><button class="flex gap-1 items-center select-none pointer-events-auto py-2 text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 size-9 rounded-full px-2" aria-label="Copy" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon-md"><use href="/cdn/assets/sprites-core-cohbnghc.svg#ce3544" fill="currentColor"></use></svg></button></div><div class="pe-11 pt-3" style="transform: none;"><div class="relative z-0 flex max-w-full"><div id="code-block-viewer" dir="ltr" class="q9tKkq_viewer cm-editor z-10 light:cm-light dark:cm-light flex h-full w-full flex-col items-stretch ͼs ͼ16"><div class="cm-scroller"><div class="cm-content q9tKkq_readonly"><span>Layer 0: atproto</span><br><span>- DID / handle</span><br><span>- user repo</span><br><span>- federation</span><br><span>- sync/firehose</span><br><span>- Lexicon schemas</span><br><span>- public distribution</span><br><br><span>Layer 1: MIR</span><br><span>- trust semantics</span><br><span>- attestation model</span><br><span>- authority classes</span><br><span>- revocation</span><br><span>- policy engine</span><br><span>- private trust edges</span><br><span>- possibly encrypted or selectively disclosed records</span><br><br><span>Layer 2: Here</span><br><span>- social UX</span><br><span>- feeds</span><br><span>- circles</span><br><span>- discovery</span><br><span>- trust-aware ranking</span><br><span>- moderation UI</span></div></div></div></div></div></div></div></div></div><div class=""><div class="" style="width: 100%; transform: none;"></div></div></div></div></div></pre>
+                            <p data-start="7404" data-end="7525">
+                                Это позволит не спорить с природой atproto, а
+                                использовать его там, где он силён.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 84px"
+                                        ><a
+                                            href="https://atproto.com/specs/atp?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/specs/atp?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 84px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <hr data-start="7527" data-end="7530" />
+                            <h2 data-start="7532" data-end="7576">
+                                Как это можно приземлить на твои сущности
+                            </h2>
+                            <p data-start="7578" data-end="7594">
+                                Я бы маппил так:
+                            </p>
+                            <ul data-start="7596" data-end="8073">
+                                <li data-start="7596" data-end="7639">
+                                    <p data-start="7598" data-end="7639">
+                                        <strong
+                                            data-start="7598"
+                                            data-end="7614"
+                                            >Here account</strong
+                                        >
+                                        → atproto DID + handle
+                                    </p>
+                                </li>
+                                <li data-start="7640" data-end="7709">
+                                    <p data-start="7642" data-end="7709">
+                                        <strong
+                                            data-start="7642"
+                                            data-end="7682"
+                                            >Here profile/public social
+                                            artifacts</strong
+                                        >
+                                        → records в atproto repo
+                                    </p>
+                                </li>
+                                <li data-start="7710" data-end="7763">
+                                    <p data-start="7712" data-end="7763">
+                                        <strong
+                                            data-start="7712"
+                                            data-end="7736"
+                                            >MIR trust assertions</strong
+                                        >
+                                        → custom Lexicon records
+                                    </p>
+                                </li>
+                                <li data-start="7764" data-end="7871">
+                                    <p data-start="7766" data-end="7871">
+                                        <strong
+                                            data-start="7766"
+                                            data-end="7827"
+                                            >Derived trust score / community
+                                            verdict / policy outcomes</strong
+                                        >
+                                        → labelers или отдельный MIR view
+                                        service
+                                    </p>
+                                </li>
+                                <li data-start="7872" data-end="7978">
+                                    <p data-start="7874" data-end="7978">
+                                        <strong
+                                            data-start="7874"
+                                            data-end="7918"
+                                            >Sensitive attestations / private
+                                            circles</strong
+                                        >
+                                        → не в публичный atproto repo, а в
+                                        parallel private layer
+                                    </p>
+                                </li>
+                                <li data-start="7979" data-end="8073">
+                                    <p data-start="7981" data-end="8073">
+                                        <strong
+                                            data-start="7981"
+                                            data-end="8000"
+                                            >portable export</strong
+                                        >
+                                        → CAR/export для public layer + свой
+                                        signed bundle для MIR private layer
+                                    </p>
+                                </li>
+                            </ul>
+                            <p data-start="8075" data-end="8217">
+                                Такой split хорошо совпадает с твоим стилем:
+                                user-owned substrate отдельно, derived services
+                                отдельно.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 84px"
+                                        ><a
+                                            href="https://atproto.com/specs/repository?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/specs/repository?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 84px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+3</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <hr data-start="8219" data-end="8222" />
+                            <h2 data-start="8224" data-end="8244">
+                                Что я бы не делал
+                            </h2>
+                            <h3 data-start="8246" data-end="8286">
+                                Не делал бы labels источником истины
+                            </h3>
+                            <p data-start="8287" data-end="8387">
+                                Labels хороши для overlay, но не как canonical
+                                trust ledger.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 82px"
+                                        ><a
+                                            href="https://atproto.com/specs/label?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/specs/label?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 82px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+1</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="8389" data-end="8457">
+                                Не строил бы private trust graph поверх
+                                публичных repos напрямую
+                            </h3>
+                            <p data-start="8458" data-end="8595">
+                                Потому что private audience / encrypted
+                                semantics там не являются самым зрелым, основным
+                                режимом.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 119px"
+                                        ><a
+                                            href="https://docs.bsky.app/blog/2025-protocol-roadmap-spring?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/blog/2025-protocol-roadmap-spring?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 119px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+1</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="8597" data-end="8646">
+                                <span role="text"
+                                    >Не связывал бы MIR irrevocably с
+                                    <code data-start="8634" data-end="8646"
+                                        >app.bsky.*</code
+                                    ></span
+                                >
+                            </h3>
+                            <p data-start="8647" data-end="8789">
+                                Лучше сразу жить в своих NSID и custom lexicons,
+                                чтобы Here/MIR не выглядели как “форк
+                                микроблогинга”.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 119px"
+                                        ><a
+                                            href="https://docs.bsky.app/docs/advanced-guides/custom-schemas?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/docs/advanced-guides/custom-schemas?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 119px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+1</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <hr data-start="8791" data-end="8794" />
+                            <h2 data-start="8796" data-end="8841">
+                                Минимальный стартовый дизайн для прототипа
+                            </h2>
+                            <p data-start="8843" data-end="8872">
+                                Я бы начал с 4 типов records:
+                            </p>
+                            <pre
+                                class="overflow-visible! px-0!"
+                                data-start="8874"
+                                data-end="8999"
+                            ><div class="relative w-full mt-4 mb-1"><div class=""><div class="relative"><div class="h-full min-h-0 min-w-0"><div class="h-full min-h-0 min-w-0" style="width: 100%; transform: none;"><div class="border border-token-border-light border-radius-3xl corner-superellipse/1.1 rounded-3xl"><div class="h-full w-full border-radius-3xl bg-token-bg-elevated-secondary corner-superellipse/1.1 overflow-clip rounded-3xl lxnfua_clipPathFallback"><div class="sticky z-2 select-none top-(--sticky-padding-top)"><div class="flex w-full items-center justify-between py-1.5 ps-4 pe-1.5 font-sans md:ps-5 bg-token-bg-elevated-secondary"><div class="flex max-w-[75%] min-w-0 cursor-default items-center text-sm font-medium justify-self-start text-token-text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon-sm me-2.5 shrink-0"><use href="/cdn/assets/sprites-core-cohbnghc.svg#e45ab3" fill="currentColor"></use></svg>JSON</div><div class="flex flex-row items-center gap-0.5 justify-self-end"><button class="flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 size-9 rounded-full px-2" aria-label="Copy" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon-md"><use href="/cdn/assets/sprites-core-cohbnghc.svg#ce3544" fill="currentColor"></use></svg></button></div></div></div><div class="pointer-events-none absolute inset-x-4 top-12 bottom-4"><div class="pointer-events-none sticky z-40 shrink-0 z-1!" style="top: calc(calc(var(--sticky-padding-top) + 48px) - 1px * 3); margin-bottom: calc(-4px); height: calc(4px); mask-image: linear-gradient(transparent 25%, white 75%);"><div class="sticky bg-token-border-light" style="top: calc(var(--sticky-padding-top) + 48px); height: 1px;"></div></div></div><div class="" style="transform: none;"><div class="relative z-0 flex max-w-full"><div id="code-block-viewer" dir="ltr" class="q9tKkq_viewer cm-editor z-10 light:cm-light dark:cm-light flex h-full w-full flex-col items-stretch ͼs ͼ16"><div class="cm-scroller"><div class="cm-content q9tKkq_readonly"><span>{</span><br><span>  "$type": </span><span class="ͼz">"social.here.profile"</span><span>,</span><br><span>  "displayName": </span><span class="ͼz">"Egor"</span><span>,</span><br><span>  "about": </span><span class="ͼz">"Builder of trust-aware social systems"</span><br><span>}</span></div></div></div></div></div></div></div></div></div><div class=""><div class="" style="width: 100%; transform: none;"></div></div></div></div></div></pre>
+                            <pre
+                                class="overflow-visible! px-0!"
+                                data-start="9001"
+                                data-end="9126"
+                            ><div class="relative w-full mt-4 mb-1"><div class=""><div class="relative"><div class="h-full min-h-0 min-w-0"><div class="h-full min-h-0 min-w-0" style="width: 100%; transform: none;"><div class="border border-token-border-light border-radius-3xl corner-superellipse/1.1 rounded-3xl"><div class="h-full w-full border-radius-3xl bg-token-bg-elevated-secondary corner-superellipse/1.1 overflow-clip rounded-3xl lxnfua_clipPathFallback"><div class="sticky z-2 select-none top-(--sticky-padding-top)"><div class="flex w-full items-center justify-between py-1.5 ps-4 pe-1.5 font-sans md:ps-5 bg-token-bg-elevated-secondary"><div class="flex max-w-[75%] min-w-0 cursor-default items-center text-sm font-medium justify-self-start text-token-text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon-sm me-2.5 shrink-0"><use href="/cdn/assets/sprites-core-cohbnghc.svg#e45ab3" fill="currentColor"></use></svg>JSON</div><div class="flex flex-row items-center gap-0.5 justify-self-end"><button class="flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 size-9 rounded-full px-2" aria-label="Copy" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon-md"><use href="/cdn/assets/sprites-core-cohbnghc.svg#ce3544" fill="currentColor"></use></svg></button></div></div></div><div class="pointer-events-none absolute inset-x-4 top-12 bottom-4"><div class="pointer-events-none sticky z-40 shrink-0 z-1!" style="top: calc(calc(var(--sticky-padding-top) + 48px) - 1px * 3); margin-bottom: calc(-4px); height: calc(4px); mask-image: linear-gradient(transparent 25%, white 75%);"><div class="sticky bg-token-border-light" style="top: calc(var(--sticky-padding-top) + 48px); height: 1px;"></div></div></div><div class="" style="transform: none;"><div class="relative z-0 flex max-w-full"><div id="code-block-viewer" dir="ltr" class="q9tKkq_viewer cm-editor z-10 light:cm-light dark:cm-light flex h-full w-full flex-col items-stretch ͼs ͼ16"><div class="cm-scroller"><div class="cm-content q9tKkq_readonly"><span>{</span><br><span>  "$type": </span><span class="ͼz">"social.here.graph.follow"</span><span>,</span><br><span>  "subject": </span><span class="ͼz">"did:plc:alice123"</span><span>,</span><br><span>  "createdAt": </span><span class="ͼz">"2026-03-21T15:00:00Z"</span><br><span>}</span></div></div></div></div></div></div></div></div></div><div class=""><div class="" style="width: 100%; transform: none;"></div></div></div></div></div></pre>
+                            <pre
+                                class="overflow-visible! px-0!"
+                                data-start="9128"
+                                data-end="9340"
+                            ><div class="relative w-full mt-4 mb-1"><div class=""><div class="relative"><div class="h-full min-h-0 min-w-0"><div class="h-full min-h-0 min-w-0" style="width: 100%; transform: none;"><div class="border border-token-border-light border-radius-3xl corner-superellipse/1.1 rounded-3xl"><div class="h-full w-full border-radius-3xl bg-token-bg-elevated-secondary corner-superellipse/1.1 overflow-clip rounded-3xl lxnfua_clipPathFallback"><div class="sticky z-2 select-none top-(--sticky-padding-top)"><div class="flex w-full items-center justify-between py-1.5 ps-4 pe-1.5 font-sans md:ps-5 bg-token-bg-elevated-secondary"><div class="flex max-w-[75%] min-w-0 cursor-default items-center text-sm font-medium justify-self-start text-token-text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon-sm me-2.5 shrink-0"><use href="/cdn/assets/sprites-core-cohbnghc.svg#e45ab3" fill="currentColor"></use></svg>JSON</div><div class="flex flex-row items-center gap-0.5 justify-self-end"><button class="flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 size-9 rounded-full px-2" aria-label="Copy" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon-md"><use href="/cdn/assets/sprites-core-cohbnghc.svg#ce3544" fill="currentColor"></use></svg></button></div></div></div><div class="pointer-events-none absolute inset-x-4 top-12 bottom-4"><div class="pointer-events-none sticky z-40 shrink-0 z-1!" style="top: calc(calc(var(--sticky-padding-top) + 48px) - 1px * 3); margin-bottom: calc(-4px); height: calc(4px); mask-image: linear-gradient(transparent 25%, white 75%);"><div class="sticky bg-token-border-light" style="top: calc(var(--sticky-padding-top) + 48px); height: 1px;"></div></div></div><div class="" style="transform: none;"><div class="relative z-0 flex max-w-full"><div id="code-block-viewer" dir="ltr" class="q9tKkq_viewer cm-editor z-10 light:cm-light dark:cm-light flex h-full w-full flex-col items-stretch ͼs ͼ16"><div class="cm-scroller"><div class="cm-content q9tKkq_readonly"><span>{</span><br><span>  "$type": </span><span class="ͼz">"social.here.trust.attestation"</span><span>,</span><br><span>  "subject": </span><span class="ͼz">"did:plc:alice123"</span><span>,</span><br><span>  "issuer": </span><span class="ͼz">"did:plc:bob456"</span><span>,</span><br><span>  "kind": </span><span class="ͼz">"knows-personally"</span><span>,</span><br><span>  "confidence": </span><span class="ͼy">0.82</span><span>,</span><br><span>  "createdAt": </span><span class="ͼz">"2026-03-21T15:00:00Z"</span><br><span>}</span></div></div></div></div></div></div></div></div></div><div class=""><div class="" style="width: 100%; transform: none;"></div></div></div></div></div></pre>
+                            <pre
+                                class="overflow-visible! px-0!"
+                                data-start="9342"
+                                data-end="9498"
+                            ><div class="relative w-full mt-4 mb-1"><div class=""><div class="relative"><div class="h-full min-h-0 min-w-0"><div class="h-full min-h-0 min-w-0" style="width: 100%; transform: none;"><div class="border border-token-border-light border-radius-3xl corner-superellipse/1.1 rounded-3xl"><div class="h-full w-full border-radius-3xl bg-token-bg-elevated-secondary corner-superellipse/1.1 overflow-clip rounded-3xl lxnfua_clipPathFallback"><div class="sticky z-2 select-none top-(--sticky-padding-top)"><div class="flex w-full items-center justify-between py-1.5 ps-4 pe-1.5 font-sans md:ps-5 bg-token-bg-elevated-secondary"><div class="flex max-w-[75%] min-w-0 cursor-default items-center text-sm font-medium justify-self-start text-token-text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon-sm me-2.5 shrink-0"><use href="/cdn/assets/sprites-core-cohbnghc.svg#e45ab3" fill="currentColor"></use></svg>JSON</div><div class="flex flex-row items-center gap-0.5 justify-self-end"><button class="flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 size-9 rounded-full px-2" aria-label="Copy" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon-md"><use href="/cdn/assets/sprites-core-cohbnghc.svg#ce3544" fill="currentColor"></use></svg></button></div></div></div><div class="pointer-events-none absolute inset-x-4 top-12 bottom-4"><div class="pointer-events-none sticky z-40 shrink-0 z-1!" style="top: calc(calc(var(--sticky-padding-top) + 48px) - 1px * 3); margin-bottom: calc(-4px); height: calc(4px); mask-image: linear-gradient(transparent 25%, white 75%);"><div class="sticky bg-token-border-light" style="top: calc(var(--sticky-padding-top) + 48px); height: 1px;"></div></div></div><div class="" style="transform: none;"><div class="relative z-0 flex max-w-full"><div id="code-block-viewer" dir="ltr" class="q9tKkq_viewer cm-editor z-10 light:cm-light dark:cm-light flex h-full w-full flex-col items-stretch ͼs ͼ16"><div class="cm-scroller"><div class="cm-content q9tKkq_readonly"><span>{</span><br><span>  "$type": </span><span class="ͼz">"social.here.passport.ref"</span><span>,</span><br><span>  "subject": </span><span class="ͼz">"did:plc:alice123"</span><span>,</span><br><span>  "scheme": </span><span class="ͼz">"mir-passport-v1"</span><span>,</span><br><span>  "uri": </span><span class="ͼz">"mir://passport/sha256/...."</span><br><span>}</span></div></div></div></div></div></div></div></div></div><div class=""><div class="" style="width: 100%; transform: none;"></div></div></div></div></div></pre>
+                            <p data-start="9500" data-end="9511">И отдельно:</p>
+                            <ul data-start="9512" data-end="9689">
+                                <li data-start="9512" data-end="9556">
+                                    <p data-start="9514" data-end="9556">
+                                        <strong
+                                            data-start="9514"
+                                            data-end="9530"
+                                            >Here AppView</strong
+                                        >
+                                        строит UX и graph queries
+                                    </p>
+                                </li>
+                                <li data-start="9557" data-end="9607">
+                                    <p data-start="9559" data-end="9607">
+                                        <strong
+                                            data-start="9559"
+                                            data-end="9575"
+                                            >Here Labeler</strong
+                                        >
+                                        публикует policy/trust overlays
+                                    </p>
+                                </li>
+                                <li data-start="9608" data-end="9689">
+                                    <p data-start="9610" data-end="9689">
+                                        <strong
+                                            data-start="9610"
+                                            data-end="9635"
+                                            >MIR Authority Service</strong
+                                        >
+                                        валидирует attestations, revocations и
+                                        issuer classes
+                                    </p>
+                                </li>
+                            </ul>
+                            <p data-start="9691" data-end="9727">
+                                Это будет честный, чистый bootstrap.
+                            </p>
+                            <hr data-start="9729" data-end="9732" />
+                            <h2 data-start="9734" data-end="9744">Roadmap</h2>
+                            <h3 data-start="9746" data-end="9795">
+                                Phase 1 — atproto-compatible public substrate
+                            </h3>
+                            <p data-start="9796" data-end="9961">
+                                Сделай custom lexicons и Here AppView.<br
+                                    data-start="9834"
+                                    data-end="9837"
+                                />
+                                <strong data-start="9837" data-end="9857"
+                                    >Критерий успеха:</strong
+                                >
+                                аккаунт переносим, public graph живёт, записи
+                                синхронизируются.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 83px"
+                                        ><a
+                                            href="https://atproto.com/guides/account-migration?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/guides/account-migration?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 83px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="9963" data-end="9988">
+                                Phase 2 — MIR overlay
+                            </h3>
+                            <p data-start="9989" data-end="10178">
+                                Добавь trust attestation model и labeler/service
+                                для derived verdicts.<br
+                                    data-start="10059"
+                                    data-end="10062"
+                                />
+                                <strong data-start="10062" data-end="10082"
+                                    >Критерий успеха:</strong
+                                >
+                                trust view можно пересчитать независимо от raw
+                                records.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 82px"
+                                        ><a
+                                            href="https://atproto.com/specs/label?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://atproto.com/specs/label?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 82px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >AT Protocol</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+1</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="10180" data-end="10213">
+                                Phase 3 — private trust plane
+                            </h3>
+                            <p data-start="10214" data-end="10444">
+                                Вынеси private attestations, circles, sealed
+                                proofs в parallel layer, не зависящий от public
+                                repo assumptions.<br
+                                    data-start="10324"
+                                    data-end="10327"
+                                />
+                                <strong data-start="10327" data-end="10347"
+                                    >Критерий успеха:</strong
+                                >
+                                private trust edges не утекли в public
+                                federation model.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 119px"
+                                        ><a
+                                            href="https://docs.bsky.app/blog/2025-protocol-roadmap-spring?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/blog/2025-protocol-roadmap-spring?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 119px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+1</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <h3 data-start="10446" data-end="10487">
+                                Phase 4 — governance and independence
+                            </h3>
+                            <p data-start="10488" data-end="10731">
+                                Минимизируй зависимость от Bluesky-specific
+                                operational conveniences и держи свою
+                                нейтральную identity/governance story.<br
+                                    data-start="10608"
+                                    data-end="10611"
+                                />
+                                <strong data-start="10611" data-end="10631"
+                                    >Критерий успеха:</strong
+                                >
+                                Here/MIR не зависят концептуально от одного
+                                оператора сети.
+                                <span class="" data-state="closed"
+                                    ><span
+                                        class="ms-1 inline-flex max-w-full items-center select-none relative top-[-0.094rem] animate-[show_150ms_ease-in]"
+                                        data-testid="webpage-citation-pill"
+                                        style="width: 120px"
+                                        ><a
+                                            href="https://docs.bsky.app/docs/advanced-guides/entryway?utm_source=chatgpt.com"
+                                            target="_blank"
+                                            rel="noopener"
+                                            alt="https://docs.bsky.app/docs/advanced-guides/entryway?utm_source=chatgpt.com"
+                                            class="flex h-4.5 overflow-hidden rounded-xl px-2 text-[9px] font-medium transition-colors duration-150 ease-in-out text-token-text-secondary! bg-[#F4F4F4]! dark:bg-[#303030]! select-none"
+                                            style="max-width: 120px"
+                                            ><span
+                                                class="relative start-0 bottom-0 flex h-full w-full items-center"
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between"
+                                                    style="
+                                                        opacity: 1;
+                                                        transform: none;
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ><span
+                                                    class="flex h-4 w-full items-center justify-between absolute"
+                                                    style="
+                                                        opacity: 0;
+                                                        transform: translateX(
+                                                            10%
+                                                        );
+                                                    "
+                                                    ><span
+                                                        class="max-w-[15ch] grow truncate overflow-hidden text-center"
+                                                        >Bluesky
+                                                        Documentation</span
+                                                    ><span
+                                                        class="-me-1 flex h-full items-center rounded-full px-1 text-[#8F8F8F]"
+                                                        >+2</span
+                                                    ></span
+                                                ></span
+                                            ></a
+                                        ></span
+                                    ></span
+                                >
+                            </p>
+                            <hr data-start="10733" data-end="10736" />
+                            <h2 data-start="10738" data-end="10757">
+                                Мой честный итог
+                            </h2>
+                            <p data-start="10759" data-end="10963">
+                                <strong data-start="10759" data-end="10839"
+                                    >Для Here как trust-aware open social
+                                    network — atproto это сильный
+                                    кандидат.</strong
+                                ><br data-start="10839" data-end="10842" />
+                                <strong data-start="10842" data-end="10963"
+                                    >Для MIR как полного trust protocol — это
+                                    скорее хороший lower social transport layer,
+                                    но не final ground truth layer.</strong
+                                >
+                            </p>
+                            <p data-start="10965" data-end="10996">
+                                То есть моя рекомендация такая:
+                            </p>
+                            <blockquote data-start="10998" data-end="11210">
+                                <p data-start="11000" data-end="11210">
+                                    <strong data-start="11000" data-end="11210"
+                                        >Используй atproto как public identity +
+                                        public social data + federation
+                                        substrate.<br
+                                            data-start="11084"
+                                            data-end="11087"
+                                        />
+                                        Строй MIR как отдельный trust layer
+                                        поверх и рядом.<br
+                                            data-start="11140"
+                                            data-end="11143"
+                                        />
+                                        Here пусть будет приложением/сетью,
+                                        которая соединяет оба мира.</strong
+                                    >
+                                </p>
+                            </blockquote>
+                            <p data-start="11212" data-end="11309">
+                                Это, на мой взгляд, архитектурно чище, чем
+                                пытаться втиснуть весь MIR в нативные границы
+                                atproto.
+                            </p>
+                            <p data-start="11311" data-end="11471">
+                                Следующим сообщением я разложу это в виде
+                                <strong data-start="11353" data-end="11410"
+                                    >конкретной 3-layer спецификации MIR/Here
+                                    over atproto</strong
+                                >
+                                с нодами, edge types, authority classes и
+                                потоком валидации.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="z-0 flex min-h-[46px] justify-start">
+                <div
+                    aria-label="Response actions"
+                    class="touch:-me-2 touch:-ms-3.5 -ms-2.5 -me-1 flex flex-wrap items-center gap-y-4 p-1 select-none touch:w-[calc(100%+--spacing(3.5))] -mt-1 w-[calc(100%+--spacing(2.5))] duration-[1.5s] focus-within:transition-none hover:transition-none touch:pointer-events-auto pointer-events-none [mask-image:linear-gradient(to_right,black_33%,transparent_66%)] [mask-size:300%_100%] [mask-position:100%_0%] motion-safe:transition-[mask-position] group-hover/turn-messages:pointer-events-auto group-hover/turn-messages:[mask-position:0_0] group-focus-within/turn-messages:pointer-events-auto group-focus-within/turn-messages:[mask-position:0_0] has-data-[state=open]:pointer-events-auto has-data-[state=open]:[mask-position:0_0]"
+                    role="group"
+                    tabindex="-1"
+                    style="
+                        -webkit-mask-position-x: 0%;
+                        -webkit-mask-position-y: 0%;
+                    "
+                >
+                    <button
+                        class="text-token-text-secondary hover:bg-token-bg-secondary rounded-lg"
+                        aria-label="Copy response"
+                        data-testid="copy-turn-action-button"
+                        data-state="closed"
+                    >
+                        <span
+                            class="flex items-center justify-center touch:w-10 h-8 w-8"
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                aria-hidden="true"
+                                class="icon"
+                            >
+                                <use
+                                    href="/cdn/assets/sprites-core-cohbnghc.svg#ce3544"
+                                    fill="currentColor"
+                                ></use></svg
+                        ></span></button
+                    ><button
+                        class="text-token-text-secondary hover:bg-token-bg-secondary rounded-lg"
+                        aria-label="Good response"
+                        aria-pressed="false"
+                        data-testid="good-response-turn-action-button"
+                        data-state="closed"
+                    >
+                        <span
+                            class="flex items-center justify-center touch:w-10 h-8 w-8"
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                aria-hidden="true"
+                                class="icon"
+                            >
+                                <use
+                                    href="/cdn/assets/sprites-core-cohbnghc.svg#51753c"
+                                    fill="currentColor"
+                                ></use></svg
+                        ></span></button
+                    ><button
+                        class="text-token-text-secondary hover:bg-token-bg-secondary rounded-lg"
+                        aria-label="Bad response"
+                        aria-pressed="false"
+                        data-testid="bad-response-turn-action-button"
+                        data-state="closed"
+                    >
+                        <span
+                            class="flex items-center justify-center touch:w-10 h-8 w-8"
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                aria-hidden="true"
+                                class="icon"
+                            >
+                                <use
+                                    href="/cdn/assets/sprites-core-cohbnghc.svg#2126ae"
+                                    fill="currentColor"
+                                ></use></svg
+                        ></span></button
+                    ><span class="" data-state="closed"
+                        ><button
+                            type="button"
+                            id="radix-_r_tq_"
+                            aria-haspopup="menu"
+                            aria-expanded="false"
+                            data-state="closed"
+                            class="cursor-pointer touch:px-2.5 text-token-text-secondary hover:bg-token-bg-secondary h-[30px] rounded-md px-1.5"
+                            aria-label="Switch model"
+                        >
+                            <div class="flex items-center">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    aria-hidden="true"
+                                    class="icon"
+                                >
+                                    <use
+                                        href="/cdn/assets/sprites-core-cohbnghc.svg#ec66f0"
+                                        fill="currentColor"
+                                    ></use>
+                                </svg>
+                            </div></button></span
+                    ><button
+                        class="text-token-text-secondary hover:bg-token-bg-secondary touch:w-10 flex h-8 w-8 items-center justify-center rounded-lg"
+                        aria-label="More actions"
+                        type="button"
+                        id="radix-_r_tt_"
+                        aria-haspopup="menu"
+                        aria-expanded="false"
+                        data-state="closed"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            aria-hidden="true"
+                            class="icon"
+                        >
+                            <use
+                                href="/cdn/assets/sprites-core-cohbnghc.svg#f6d0e2"
+                                fill="currentColor"
+                            ></use>
+                        </svg></button
+                    ><button
+                        class="group/footnote bg-token-bg-primary flex w-fit items-center gap-1.5 py-1.5 pe-3 transition-shadow duration-700 ps-3 hover:bg-token-bg-tertiary rounded-3xl"
+                        aria-label="Sources"
+                        style="opacity: 1; transform: none"
+                    >
+                        <div class="flex flex-row-reverse">
+                            <div
+                                class="border-token-bg-primary bg-token-bg-primary flex items-center overflow-clip rounded-full -ms-1.5 first:me-0 border-2 group-hover/footnote:border-token-bg-tertiary relative"
+                            >
+                                <div class="relative inline-block shrink-0">
+                                    <img
+                                        alt=""
+                                        width="32"
+                                        height="32"
+                                        class="icon-sm rounded-full border border-token-border-light border-[0.5px] duration-200 motion-safe:transition-opacity opacity-100"
+                                        src="https://www.google.com/s2/favicons?domain=https://atproto.com&amp;sz=32"
+                                    />
+                                </div>
+                            </div>
+                            <div
+                                class="border-token-bg-primary bg-token-bg-primary flex items-center overflow-clip rounded-full -ms-1.5 first:me-0 border-2 group-hover/footnote:border-token-bg-tertiary relative"
+                            >
+                                <div class="relative inline-block shrink-0">
+                                    <img
+                                        alt=""
+                                        width="32"
+                                        height="32"
+                                        class="icon-sm rounded-full border border-token-border-light border-[0.5px] duration-200 motion-safe:transition-opacity opacity-100"
+                                        src="https://www.google.com/s2/favicons?domain=https://docs.bsky.app&amp;sz=32"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="text-token-text-secondary mt-[-1px] text-[13px] font-medium"
+                        >
+                            Sources
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

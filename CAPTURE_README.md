@@ -22,6 +22,8 @@ This document describes the Mac-side capture workflow for saving the current Cha
   - provides the entry points:
     - `make capture-browser`
     - `make capture-browser-extract`
+    - `make serve-viewer`
+    - `make test`
 
 ## Supported Browsers
 
@@ -60,6 +62,8 @@ This saves:
 
 - HTML to `import/`
 - JSON to `import_json/`
+
+These are local runtime directories. Checked-in public regression fixtures live under `tests/fixtures/`.
 
 At the end of the run, the script also emits:
 
@@ -323,3 +327,9 @@ http://localhost:9000/viewer/index.html
 ```
 
 This lets you browse the JSON files in `import_json/`, branch dialogs, edit them, and save new files.
+
+To verify extractor behavior against the checked-in public corpus:
+
+```bash
+make test
+```

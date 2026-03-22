@@ -101,3 +101,9 @@ htmlcov/
 
 # pyenv
 # .python-version
+
+### Project runtime data
+import/*
+!import/.gitkeep
+import_json/*
+!import_json/.gitkeep

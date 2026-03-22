@@ -15,6 +15,7 @@ TITLE_RE = re.compile(r"<title>(.*?)</title>", re.IGNORECASE | re.DOTALL)
 TAG_RE = re.compile(r"<[^>]+>", re.DOTALL)
 BREAK_TAG_RE = re.compile(r"<(?:br|/p|/div|/li|/pre|/ol|/ul|/blockquote|/h[1-6])\b[^>]*>", re.IGNORECASE)
 LIST_ITEM_RE = re.compile(r"<li\b[^>]*>", re.IGNORECASE)
+CONTENT_BLOCK_TAG_RE = re.compile(r"<(div|pre)\b[^>]*>", re.IGNORECASE)
 
 
 def get_attr(tag_html: str, name: str) -> str | None:
@@ -70,6 +71,26 @@ def find_matching_section_end(html: str, start: int) -> int:
         pos = match.end()
 
 
+def find_matching_tag_end(html: str, start: int, tag_name: str) -> int:
+    pos = start
+    depth = 0
+    tag_re = re.compile(rf"</?{re.escape(tag_name)}\b[^>]*>", re.IGNORECASE)
+    while True:
+        match = tag_re.search(html, pos)
+        if not match:
+            return len(html)
+
+        tag = match.group(0)
+        if tag.startswith("</"):
+            depth -= 1
+            if depth == 0:
+                return match.end()
+        elif not tag.endswith("/>"):
+            depth += 1
+
+        pos = match.end()
+
+
 def extract_message_html(block: str, role: str) -> tuple[str | None, str]:
     message_re = re.compile(
         rf"<div\b(?=[^>]*data-message-author-role=\"{re.escape(role)}\")[^>]*>",
@@ -100,14 +121,38 @@ def extract_message_html(block: str, role: str) -> tuple[str | None, str]:
     return message_id, block[message_start:pos]
 
 
+def collect_content_blocks(message_html: str, class_markers: tuple[str, ...]) -> list[str]:
+    blocks: list[tuple[int, int, str]] = []
+
+    for match in CONTENT_BLOCK_TAG_RE.finditer(message_html):
+        tag_html = match.group(0)
+        class_attr = get_attr(tag_html, "class") or ""
+        if not any(marker in class_attr for marker in class_markers):
+            continue
+
+        start = match.start()
+        end = find_matching_tag_end(message_html, start, match.group(1))
+        if any(existing_start <= start and end <= existing_end for existing_start, existing_end, _ in blocks):
+            continue
+
+        blocks.append((start, end, message_html[start:end]))
+
+    return [block_html for _, _, block_html in blocks]
+
+
 def extract_content_fragments(message_html: str) -> list[str]:
     fragments: list[str] = []
-    content_re = re.compile(
-        r"<(?:div|pre)\b(?=[^>]*class=\"[^\"]*(?:whitespace-pre-wrap|markdown|cm-content)[^\"]*\")[^>]*>(.*?)</(?:div|pre)>",
-        re.IGNORECASE | re.DOTALL,
-    )
-    for match in content_re.finditer(message_html):
-        text = strip_html(match.group(1))
+
+    for block_html in collect_content_blocks(message_html, ("markdown", "whitespace-pre-wrap")):
+        text = strip_html(block_html)
+        if text:
+            fragments.append(text)
+
+    if fragments:
+        return fragments
+
+    for block_html in collect_content_blocks(message_html, ("cm-content",)):
+        text = strip_html(block_html)
         if text:
             fragments.append(text)
 
@@ -155,7 +200,7 @@ def extract_html(input_path: Path) -> dict:
 
     return {
         "title": title,
-        "source_file": str(input_path),
+        "source_file": str(input_path.resolve()),
         "message_count": len(messages),
         "messages": messages,
     }

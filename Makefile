@@ -10,7 +10,7 @@ PORT ?= 8000
 HTML_FILES := $(wildcard $(IMPORT_DIR)/*.html)
 JSON_FILES := $(patsubst $(IMPORT_DIR)/%.html,$(OUTPUT_DIR)/%.json,$(HTML_FILES))
 
-.PHONY: help dirs extract-all capture-browser capture-browser-extract serve-viewer clean
+.PHONY: help dirs extract-all capture-browser capture-browser-extract serve-viewer test clean
 
 help:
 	@echo "Targets:"
@@ -18,6 +18,7 @@ help:
 	@echo "  make capture-browser Capture the front browser tab HTML into $(IMPORT_DIR)/"
 	@echo "  make capture-browser-extract Capture the front browser tab and extract JSON"
 	@echo "  make serve-viewer Start the viewer app for $(OUTPUT_DIR)/ on port $(PORT)"
+	@echo "  make test         Run extractor regression tests"
 	@echo "  make clean        Remove extracted JSON files from $(OUTPUT_DIR)/"
 
 dirs:
@@ -37,6 +38,9 @@ capture-browser-extract: dirs
 
 serve-viewer:
 	@$(PYTHON) $(VIEWER_SERVER) --port $(PORT) --repo-root . --dialog-dir $(OUTPUT_DIR)
+
+test:
+	@$(PYTHON) -m unittest discover -s tests -p 'test_*.py'
 
 clean:
 	@rm -f $(OUTPUT_DIR)/*.json
