@@ -52,6 +52,17 @@ make test
 
 Tests use the checked-in public corpus under `tests/fixtures/`.
 
+### 4. Publish a release bundle
+
+Push a tag like `v0.0.1` and GitHub Actions will build a minimal `ChatGPTDialogs-0.0.1.zip` release asset plus checksums.
+
+For local packaging:
+
+```bash
+make release-bundle VERSION=v0.0.1
+make verify-release-bundle VERSION=v0.0.1
+```
+
 Supported browsers:
 
 - `Safari`
@@ -119,6 +130,7 @@ git status --short
 - `viewer/`: Local folder-based viewer/editor for dialogs in `import_json/`.
 - `tests/fixtures/`: public HTML/JSON regression corpus for the extractor.
 - `tests/test_extract_chatgpt_html.py`: extractor regression tests.
+- `.github/workflows/release.yml`: GitHub Actions workflow that publishes minimal release bundles for `v*` tags.
 - `import/`: Local runtime directory for captured ChatGPT HTML.
 - `import_json/`: Local runtime directory for extracted JSON.
 - `exports/`: Optional checked-in exports directory.

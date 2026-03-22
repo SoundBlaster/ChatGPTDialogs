@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build minimal release bundle
+        run: |
+          set -euo pipefail
+          output="$(./scripts/build-release-bundle.sh "${GITHUB_REF_NAME}" ".")"
+          echo "$output"
+          echo "$output" >> "$GITHUB_ENV"
+
+      - name: Verify release bundle policy
+        run: |
+          set -euo pipefail
+          ./scripts/verify-release-bundle.sh "${ARTIFACT_ZIP}"
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view "${GITHUB_REF_NAME}" > /dev/null 2>&1; then
+            gh release upload "${GITHUB_REF_NAME}" "${ARTIFACT_ZIP}" --clobber
+            gh release upload "${GITHUB_REF_NAME}" "${ARTIFACT_SUMS}" --clobber
+          else
+            gh release create "${GITHUB_REF_NAME}" \
+              --title "ChatGPTDialogs ${GITHUB_REF_NAME}" \
+              --generate-notes \
+              "${ARTIFACT_ZIP}" \
+              "${ARTIFACT_SUMS}"
+          fi

@@ -8,10 +8,12 @@ This repository stores ChatGPTDialogs source material, extraction utilities, and
 - `EXTRACTOR_README.md`: usage notes for the extraction scripts.
 - `extract_chatgpt_html.py`: Python script that converts saved ChatGPT HTML pages into normalized JSON.
 - `scripts/capture_chatgpt_tab.sh` and `scripts/browser_eval.js`: browser-capture workflow for the active ChatGPT tab.
+- `scripts/build-release-bundle.sh` and `scripts/verify-release-bundle.sh`: release bundle builder and policy checker.
 - `viewer/server.py`: local viewer server for extracted dialogs.
 - `tests/fixtures/`: checked-in public HTML/JSON regression corpus for the extractor.
 - `import/` and `import_json/`: local runtime directories for captures and extracted JSON.
 - `exports/`: optional checked-in conversation exports.
+- `.github/workflows/release.yml`: GitHub Actions release workflow for `v*` tags.
 - `page_example/` and `pre_ideal_example_markdown/`: example reference material.
 
 ## Build, Test, and Development Commands
@@ -22,6 +24,10 @@ There is no package manager or compiled build step. Use the scripts directly:
 - `make capture-browser-extract`: captures the active browser tab and writes extracted JSON into `import_json/`.
 - `make serve-viewer`: starts the local viewer for extracted dialogs.
 - `make test`: runs the extractor regression suite against checked-in fixtures.
+- `make release-bundle VERSION=v0.0.1`: builds a minimal release asset locally.
+- `make verify-release-bundle VERSION=v0.0.1`: validates the local release asset for that version.
+- `./scripts/build-release-bundle.sh v0.0.1 .`: builds a minimal release asset locally.
+- `./scripts/verify-release-bundle.sh dist/release/ChatGPTDialogs-0.0.1.zip`: validates a built release asset.
 - `git status --short`: verify only the intended export or documentation files changed.
 
 ## Coding Style & Naming Conventions

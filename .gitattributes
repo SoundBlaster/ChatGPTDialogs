@@ -1,0 +1,11 @@
+.github/ export-ignore
+AGENTS.md export-ignore
+ARCHITECTURE_DECISION.md export-ignore
+CAPTURE_README.md export-ignore
+EXTRACTOR_README.md export-ignore
+page_example/ export-ignore
+pre_ideal_example_markdown/ export-ignore
+tests/ export-ignore
+import/ export-ignore
+import_json/ export-ignore
+tmp.html export-ignore
