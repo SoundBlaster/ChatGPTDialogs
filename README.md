@@ -10,22 +10,6 @@ make capture-browser-extract
 
 This captures the active ChatGPT browser tab into `import/` and writes extracted JSON into `import_json/`.
 
-## Repository Layout
-
-- `extract_chatgpt_html.py`: Converts saved ChatGPT web HTML pages into normalized JSON dialog files.
-- `scripts/capture_chatgpt_tab.sh`: Mac capture helper that saves the current browser conversation HTML into `import/`.
-- `scripts/browser_eval.js`: JXA bridge used by the capture script to run JavaScript in the active browser tab.
-- `viewer/`: Local folder-based viewer/editor for dialogs in `import_json/`.
-- `tests/fixtures/`: public HTML/JSON regression corpus for the extractor.
-- `tests/test_extract_chatgpt_html.py`: extractor regression tests.
-- `import/`: Local runtime directory for captured ChatGPT HTML.
-- `import_json/`: Local runtime directory for extracted JSON.
-- `exports/`: Optional checked-in exports directory.
-- `page_example/`: Example HTML reference material.
-- `pre_ideal_example_markdown/`: Draft/reference markdown content.
-- `EXTRACTOR_README.md`: Detailed notes for the extraction scripts.
-- `CAPTURE_README.md`: Browser-capture manual for the Mac automation flow.
-
 ## Main Workflows
 
 ### 1. Capture the current browser tab into `import/`
@@ -126,6 +110,22 @@ git status --short
 - Browser capture on macOS depends on Automation permissions for the terminal app controlling the browser.
 - ChatGPT DOM structure changes over time, so extractor regressions should be guarded with `make test`.
 - `import/` and `import_json/` are ignored runtime directories; fixtures belong under `tests/fixtures/`.
+
+## Repository Layout
+
+- `extract_chatgpt_html.py`: Converts saved ChatGPT web HTML pages into normalized JSON dialog files.
+- `scripts/capture_chatgpt_tab.sh`: Mac capture helper that saves the current browser conversation HTML into `import/`.
+- `scripts/browser_eval.js`: JXA bridge used by the capture script to run JavaScript in the active browser tab.
+- `viewer/`: Local folder-based viewer/editor for dialogs in `import_json/`.
+- `tests/fixtures/`: public HTML/JSON regression corpus for the extractor.
+- `tests/test_extract_chatgpt_html.py`: extractor regression tests.
+- `import/`: Local runtime directory for captured ChatGPT HTML.
+- `import_json/`: Local runtime directory for extracted JSON.
+- `exports/`: Optional checked-in exports directory.
+- `page_example/`: Example HTML reference material.
+- `pre_ideal_example_markdown/`: Draft/reference markdown content.
+- `EXTRACTOR_README.md`: Detailed notes for the extraction scripts.
+- `CAPTURE_README.md`: Browser-capture manual for the Mac automation flow.
 
 ## Related Documents
 
