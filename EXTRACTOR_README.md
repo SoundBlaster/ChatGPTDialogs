@@ -22,14 +22,22 @@ make extract-all
 make test
 ```
 
-4. При необходимости сохранить открытую страницу из браузера в локальные runtime-каталоги:
+4. Обнаружить общие префиксы и сгенерировать metadata для связей между диалогами:
+
+```bash
+make detect-lineage
+```
+
+Эта команда создает `import_json/lineage.json` с информацией о том, какие JSON-файлы являются продолжениями или ветвями друг друга. Используется для построения деревьев разговоров в ContextBuilder.
+
+5. При необходимости сохранить открытую страницу из браузера в локальные runtime-каталоги:
 
 ```bash
 make capture-browser
 make capture-browser-extract
 ```
 
-5. Открыть полученные JSON в репозитории `ContextBuilder`, указав ему директорию `import_json/` или другую директорию с совместимыми JSON-файлами.
+6. Открыть полученные JSON в репозитории `ContextBuilder`, указав ему директорию `import_json/` или другую директорию с совместимыми JSON-файлами.
 
 ## JSON-контракт
 
@@ -61,6 +69,7 @@ make capture-browser-extract
 - `tests/fixtures/regressions/`: точечные regression-кейсы
 - `scripts/capture_chatgpt_tab.sh`: локальный macOS-скрипт захвата активной вкладки браузера
 - `scripts/browser_eval.js`: JXA-мост для выполнения JavaScript в браузере
+- `scripts/detect_lineage.py`: обнаруживает общие prefixes и генерирует ContextBuilder-совместимые связи между диалогами
 
 ## Каталоги данных
 

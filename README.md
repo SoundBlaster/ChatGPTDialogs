@@ -34,7 +34,39 @@ make test
 
 Tests use the checked-in public corpus under `tests/fixtures/`.
 
-### 3. Optional local browser capture
+### 3. Detect lineage and generate relationships
+
+When exporting ChatGPT conversations at different times or from branches, exported JSON files often share identical `message_id` sequences at the beginning. The lineage detection script identifies these relationships and generates a manifest:
+
+```bash
+make detect-lineage
+```
+
+This outputs `import_json/lineage.json` with detected prefix relationships in ContextBuilder-compatible format:
+- Files with no shared messages are marked as roots
+- Files where another file's entire sequence is a prefix are marked as branches
+- Each branch records the parent conversation_id and the branch point (last shared message_id)
+- All relationships use `link_type: "branch"` (both continuations and divergences are branches)
+
+Example:
+```json
+{
+  "conversation_id": "SpecGraph_-_DB_Schema_Query_Language",
+  "file": "SpecGraph_-_DB_Schema_Query_Language.json",
+  "message_count": 10,
+  "lineage": {
+    "parents": [
+      {
+        "conversation_id": "SpecGraph_-_Модель",
+        "message_id": "a25d74ee-fc64-4d83-b7cd-bf8dc7309219",
+        "link_type": "branch"
+      }
+    ]
+  }
+}
+```
+
+### 4. Optional local browser capture
 
 If you still use the legacy local capture flow, you can save the active ChatGPT tab into `import/` and optionally extract it into `import_json/`:
 
@@ -60,7 +92,7 @@ You can tune timing with variables such as:
 ACTIVATION_DELAY=2 SCROLL_PAUSE=2 MAX_SCROLLS=30 make capture-browser
 ```
 
-### 4. Open extracted JSON in ContextBuilder
+### 5. Open extracted JSON in ContextBuilder
 
 `ContextBuilder` is the local viewer/editor for extracted dialogs. Point it at `import_json/` or at another directory containing compatible dialog JSON files.
 
@@ -113,8 +145,10 @@ git status --short
 - `extract_chatgpt_html.py`: converts saved ChatGPT HTML pages into normalized JSON dialog files.
 - `tests/fixtures/`: public HTML/JSON regression corpus for the extractor.
 - `tests/test_extract_chatgpt_html.py`: extractor regression tests.
+- `tests/test_detect_lineage.py`: lineage detection tests.
 - `scripts/capture_chatgpt_tab.sh`: local macOS capture helper that saves the current browser conversation HTML into `import/`.
 - `scripts/browser_eval.js`: JXA bridge used by the capture script to run JavaScript in the active browser tab.
+- `scripts/detect_lineage.py`: detects shared message-ID prefixes and generates ContextBuilder-compatible lineage metadata.
 - `.github/workflows/release.yml`: GitHub Actions workflow that publishes minimal release bundles for `v*` tags.
 - `import/`: local runtime directory for captured ChatGPT HTML.
 - `import_json/`: local runtime directory for extracted JSON.
