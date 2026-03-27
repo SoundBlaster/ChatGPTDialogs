@@ -11,13 +11,14 @@ RELEASE_ARTIFACT := dist/release/ChatGPTDialogs-$(patsubst v%,%,$(VERSION)).zip
 HTML_FILES := $(wildcard $(IMPORT_DIR)/*.html)
 JSON_FILES := $(patsubst $(IMPORT_DIR)/%.html,$(OUTPUT_DIR)/%.json,$(HTML_FILES))
 
-.PHONY: help dirs extract-all capture-browser capture-browser-extract test release-bundle verify-release-bundle clean
+.PHONY: help dirs extract-all detect-lineage capture-browser capture-browser-extract test release-bundle verify-release-bundle clean
 
 help:
 	@echo "Targets:"
 	@echo "  make extract-all  Extract all HTML files from $(IMPORT_DIR)/ into $(OUTPUT_DIR)/"
 	@echo "  make capture-browser Capture the front browser tab HTML into $(IMPORT_DIR)/"
 	@echo "  make capture-browser-extract Capture the front browser tab and extract JSON"
+	@echo "  make detect-lineage Detect shared prefixes and write lineage.json"
 	@echo "  make test         Run extractor regression tests"
 	@echo "  make release-bundle VERSION=v0.0.1 Build a minimal release bundle"
 	@echo "  make verify-release-bundle VERSION=v0.0.1 Verify a built release bundle"
@@ -31,6 +32,9 @@ extract-all: dirs $(JSON_FILES)
 
 $(OUTPUT_DIR)/%.json: $(IMPORT_DIR)/%.html $(EXTRACTOR) | dirs
 	@$(PYTHON) $(EXTRACTOR) "$<" -o "$@"
+
+detect-lineage: dirs
+	@$(PYTHON) scripts/detect_lineage.py $(OUTPUT_DIR)
 
 capture-browser: dirs
 	@bash $(CAPTURE_SCRIPT)
